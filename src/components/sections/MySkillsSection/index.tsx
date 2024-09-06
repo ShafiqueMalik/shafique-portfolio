@@ -13,18 +13,20 @@ import {
 
 const MySkillsSection = () => {
   return (
-    <section className="py-12 bg-white" id="services">
+    <section id="skills-section" className=" scroll-mt-[64px] py-12 bg-white">
       <Container className=" ">
         <p className="text-primary-light text-center">Why Choose Me</p>
         <h2 className="text-4xl font-bold text-center text-secondary mb-5 md:mb-10">
           My Skills & Expertise
         </h2>
-        <div className="grid grid-cols-[1fr_1px_1fr] gap-10 md:gap-20 ">
+        <div className="grid grid-cols-1 mob-lg:grid-cols-[1fr_1px_1fr] gap-5 lg:gap-20 ">
           <div>
-            <h4 className="text-3xl text-center mb-5">FRONT-END SKILLS</h4>
-            <ul className="grid grid-cols-2 gap-3 md:gap-6 justify-between">
+            <h4 className="text-xl font-medium lg:text-3xl text-center mb-5">
+              FRONT-END SKILLS
+            </h4>
+            <ul className="grid grid-cols-1  md:grid-cols-2 gap-3 md:gap-6 justify-between">
               {frontEndMainskillsData.map((skill, index) => (
-                <li>
+                <li key={skill.skill}>
                   <Flex className="justify-between text-sm">
                     <span>{skill.skill}</span>
                     <span>{skill.value}%</span>
@@ -36,12 +38,12 @@ const MySkillsSection = () => {
           </div>
           <div className="bg-gray-200 w-[1px]" />
           <div>
-            <h4 className="text-3xl text-center mb-5">
+            <h4 className="text-xl font-medium lg:text-3xl text-center mb-5">
               BACK-END SKILLS (Secondary)
             </h4>
-            <ul className="grid grid-cols-2 gap-3 md:gap-6 justify-between">
+            <ul className="grid  grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 justify-between">
               {backEndMainskillsData.map((skill, index) => (
-                <li>
+                <li key={skill.skill}>
                   <Flex className="justify-between text-sm">
                     <span>{skill.skill}</span>
                     <span>{skill.value}%</span>

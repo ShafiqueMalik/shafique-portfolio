@@ -40,24 +40,27 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section className="py-12 bg-background-light" id="services">
+    <section
+      className=" scroll-mt-[64px] py-12 lg:py-16 "
+      id="services-section"
+    >
       <Container className="" sm>
-        <h2 className="text-4xl font-bold text-center text-secondary">
+        <h2 className="text-4xl font-bold text-center mb-2 text-secondary">
           My Services
         </h2>
-        <p className="text-sm text-center max-w-[500px] mx-auto mb-5 md:mb-10 font-light">
+        <p className="text-sm text-center max-w-[500px] mx-auto mb-8 md:mb-10 font-light">
           My goal is to ensure that every solution I provide is not only
           functional but also exceeds expectations in terms of performance and
           user experience.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
           {services.map((service, index) => (
             <div
-              key={index}
+              key={service.title}
               className="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transform hover:scale-105 transition-transform duration-300"
             >
-              <div className="flex  mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold  text-gray-800 mb-4">
+              <div className="flex  mb-2">{service.icon}</div>
+              <h3 className="text-xl font-semibold  text-gray-800 mb-0">
                 {service.title}
               </h3>
               <p className="text-gray-600 text-sm ">{service.description}</p>

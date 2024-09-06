@@ -7,20 +7,20 @@ type PortfolioCardProps = {
 };
 export default function PortfolioCard({ project }: PortfolioCardProps) {
   return (
-    <div className="relative group overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
+    <div className="relative group overflow-hidden  rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
       <img
         src={project.thumbnail}
         alt={`${project.name} thumbnail`}
         className="w-full h-[250px] object-fill"
       />
       <div
-        className="absolute inset-0 bg-black bg-opacity-80 flex flex-col justify-end items-center p-5 opacity-0 
-      group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute inset-0 bg-black bg-opacity-80 flex flex-col justify-end items-center p-5 
+     opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       >
-        <h3 className="text-white text-xl font-semibold mb-2">
+        <h3 className="text-white text-xl font-semibold mb-2 capitalize">
           {project.name}
         </h3>
-        <p className="text-gray-300 text-xs mb-4 ">
+        <p className="text-gray-300 text-xs mb-4 uppercase">
           {project.technologies?.join(" / ")}
         </p>
         <Link

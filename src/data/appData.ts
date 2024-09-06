@@ -4,6 +4,13 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 import { PROJECTS_IMAGES } from "../../public/assets/images/projects";
 
+import { IoHomeOutline } from "react-icons/io5";
+import { IoInformationCircleOutline } from "react-icons/io5";
+import { GiSkills } from "react-icons/gi";
+import { IoSchoolOutline } from "react-icons/io5";
+import { IoBriefcaseOutline } from "react-icons/io5";
+import { MdOutlineContactMail } from "react-icons/md";
+
 export const socialData = [
   {
     title: "Address",
@@ -226,3 +233,43 @@ export const ProjectsData = {
     },
   ],
 };
+
+export const navigationData = [
+  {
+    text: "Home",
+    sectionId: "home-section",
+    icon: IoHomeOutline,
+  },
+  {
+    text: "About Me",
+    sectionId: "about-section",
+    icon: IoInformationCircleOutline,
+  },
+  {
+    text: "Services",
+    sectionId: "services-section",
+    icon: IoInformationCircleOutline,
+  },
+  {
+    text: "Portfolio",
+    sectionId: "portfolio-section",
+    icon: IoBriefcaseOutline,
+  },
+  {
+    text: "Skills",
+    sectionId: "skills-section",
+    icon: GiSkills,
+  },
+
+  {
+    text: "Experience",
+    sectionId: "experience-section",
+    icon: IoSchoolOutline,
+  },
+
+  {
+    text: "Contact Me",
+    sectionId: "contact-section",
+    icon: MdOutlineContactMail,
+  },
+];

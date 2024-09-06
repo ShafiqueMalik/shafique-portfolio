@@ -12,8 +12,8 @@ export default function Timeline({ timelineData }: TimelineProps) {
     <div className="relative   py-8">
       <div className="">
         {timelineData?.map((event, index) => (
-          <div key={index} className="">
-            <div className="flex flex-col md:flex-row items-start ">
+          <div key={event.title} className="">
+            <div className="flex flex-row items-start ">
               <div className="flex flex-col self-stretch">
                 <div className="flex-shrink-0 bg-primary text-white rounded-full translate-y-[2px] h-4 w-4 flex items-center justify-center">
                   <span className=" font-medium text-[8px]">{index + 1}</span>

@@ -14,13 +14,13 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
+      <PortfolioSection />
       <MySkillsSection />
       <ExperienceSection />
-      <PortfolioSection />
 
       <ContactSection />
       <SocialIcons
-        className="fixed left-5 md:left-8 top-1/2 gap-5 md:gap-8 z-20 -translate-y-1/2 
+        className="hidden lg:flex  fixed left-2 lg:left-8 top-1/2 gap-5 md:gap-8 z-20 -translate-y-1/2 
         [&>*]:shadow-md [&>*]:shadow-white
          "
         rounded

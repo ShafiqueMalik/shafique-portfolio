@@ -1,26 +1,17 @@
-import React from "react";
 import Logo from "../Logo";
-import { navigationData } from "./data";
 import HireMeButton from "../HireMeButton";
 import Container from "../layout/Container";
+import MenuButton from "./MenuButton";
+import MenuListClient from "./MenuListClient";
 
 function Navbar() {
   return (
-    <div className="h-16 shadow">
-      <Container className="flex justify-between items-center">
-        <Logo />
-        <ul className="flex items-center ">
-          {navigationData.map((item) => (
-            <li key={item.text} className="">
-              <a
-                href="#"
-                className="px-4  py-5 flex text-primary hover:text-primary-light"
-              >
-                {item.text}
-              </a>
-            </li>
-          ))}
-        </ul>
+    <div className="h-16 shadow fixed left-0 bg-white op right-0 z-50 top-0">
+      <Container className="flex h-full justify-between items-center">
+        <MenuButton />
+
+        <Logo className="hidden mr-5 lg:ml-0 lg:flex" />
+        <MenuListClient />
         <HireMeButton />
       </Container>
     </div>

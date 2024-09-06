@@ -20,13 +20,16 @@ import { IoBriefcaseOutline } from "react-icons/io5";
 
 const ExperienceSection = () => {
   return (
-    <section className="py-12 bg-background-light" id="services">
+    <section
+      id="experience-section"
+      className=" scroll-mt-[64px] py-12 lg:py-16 bg-background-light"
+    >
       <Container className=" " sm>
         <p className="text-primary-light  text-center">My Qualification</p>
         <h2 className="text-4xl font-bold text-center text-secondary mb-5 md:mb-10">
           Awesome Journey
         </h2>
-        <div className="grid grid-cols-[1fr_1px_1fr] gap-10 md:gap-20 ">
+        <div className="grid grid-cols-1 mob-lg:grid-cols-[1fr_1px_1fr] gap-5 lg:gap-20 ">
           <div>
             <h4 className="text-3xl  font-medium  flex gap-3 items-center">
               <IoBriefcaseOutline />

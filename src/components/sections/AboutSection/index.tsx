@@ -11,20 +11,34 @@ import { APP_IMAGES } from "../../../../public/assets/images";
 
 function AboutSection() {
   return (
-    <div className=" flex items-center relative">
-      <div className="   grid grid-cols-[40%_1fr]">
-        <div className=" min-h-[calc(80vh)] flex justify-end items-center bg-primary  pt-20 ">
+    <div
+      id="about-section"
+      className="scroll-mt-[64px] flex items-center relative"
+    >
+      <div className="   grid grid-cols-1 mob-lg:grid-cols-[40%_1fr]">
+        <div className=" min-h-[calc(80vh)]  hidden mob-lg:flex  justify-end items-center bg-primary  pt-20 ">
           <Image
             src={APP_IMAGES.malik}
             alt="Shafique Malik"
             width={400}
             height={500}
             loading="eager"
-            className="  bg-gray-300 border-[5px] border-gray-100 w-[40%] h-[70%] translate-x-[60px]"
+            className="  bg-secondary/70 border-[5px] border-gray-100 
+            min-w-[200px] w-[40%] h-[70%] sm:translate-x-[60px]"
           />
         </div>
-        <Flex className="h-full gap-5 sm:gap-10 pl-[100px]  pt-20 ">
-          <Flex className="flex-col justify-center max-w-[80%]">
+        <Flex
+          className="relative  h-full flex-col gap-5 sm:gap-10 pl-8 sm:pl-[80px] md:pl-[100px] pt-40 sm:pt-20
+        pb-16 sm:pb-[130px]"
+        >
+          <Flex className="flex-col justify-center pr-5 lg:max-w-[80%]">
+            <Text
+              as="h1"
+              variant="secondary"
+              className="text-[35px] mb-10 text-center block mob-lg:hidden leading-none"
+            >
+              About Me
+            </Text>
             <div className="max-w-[244px] whitespace-nowrap">
               <Text variant="primary" className="">
                 My Self
@@ -37,7 +51,7 @@ function AboutSection() {
                 Shafique Malik
               </Text>
             </div>
-            <Text className="mt-5">
+            <Text className="mt-5 text-sm lg:text-base">
               I'm a professional Front End Developer based in Pakistan Lahore. I
               describe myself as a developer who loves coding, open source, and
               the web platform. Currently I'm working at a company called
@@ -63,6 +77,16 @@ function AboutSection() {
               rounded
             />
           </Flex>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute left-0 bottom-0 fill-primary"
+            viewBox="0 0 1440 320"
+          >
+            <path
+              fillOpacity="1"
+              d="M0,224L48,208C96,192,192,160,288,165.3C384,171,480,213,576,218.7C672,224,768,192,864,186.7C960,181,1056,203,1152,186.7C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            ></path>
+          </svg>
         </Flex>
       </div>
     </div>
