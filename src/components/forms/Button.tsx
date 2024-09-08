@@ -26,8 +26,8 @@ const Button: React.FC<ButtonProps> = ({
 
   if (primary) {
     variantStyles = outlined
-      ? "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white"
-      : "bg-primary text-white hover:bg-primary-dark hover:text-white";
+      ? "border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-white dark:border-white dark:hover:text-white dark:text-white dark:hover:bg-secondary-light"
+      : "bg-primary text-white hover:bg-primary-dark hover:text-white  dark:bg-secondary dark:hover:bg-secondary-dark";
   } else {
     variantStyles = outlined
       ? "border-2 border-gray-300 text-gray-700 bg-transparent"

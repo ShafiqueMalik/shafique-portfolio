@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       screens: {
@@ -34,12 +35,18 @@ const config: Config = {
         secondary: {
           DEFAULT: "#E64833", // Primary color
           dark: "#E64833", // Darker shade of primary
-          light: "#E64833", // Lighter shade of primary
+          light: "#cdcdcd", // Lighter shade of primary
         },
 
         background: {
           default: "#7bb6f114",
           light: "#7bb6f114",
+        },
+        dark: {
+          DEFAULT: "#121212",
+          light: "#1B1F24",
+          text: "white",
+          "text-light": "#bec0c3",
         },
       },
     },

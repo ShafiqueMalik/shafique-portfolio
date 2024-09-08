@@ -12,7 +12,9 @@ function Logo({ light = false, className }: LogoProps) {
     <Link href={`#home-section`}>
       <div
         className={twMerge(
-          `flex gap-2 items-center text-primary text-xl  font-bold `,
+          `flex gap-2 items-center text-primary text-xl  font-bold 
+          dark:text-dark-text
+          `,
           light && "text-white",
           className
         )}

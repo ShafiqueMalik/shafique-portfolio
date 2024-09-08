@@ -7,8 +7,7 @@ import { APP_IMAGES } from "../../../../public/assets/images";
 import Button from "../../forms/Button";
 import FloatingInfoSection from "./FloatingInfoSection";
 import { MdOutlineFileDownload } from "react-icons/md";
-import { FaRegHandPointRight } from "react-icons/fa";
-import { socialData } from "@/data/appData";
+
 import SocialIcons from "@/components/SocialIcons";
 import Link from "next/link";
 import Head from "next/head";
@@ -24,7 +23,9 @@ function HeroSection() {
       <div
         id="home-section"
         className="scroll-mt-[64px] bg-background-light min-h-[250px] max-h-[550px] h-[50vh] mt-[64px]
-       sm:h-[calc(100vh-64px)] flex items-center relative"
+       sm:h-[calc(100vh-64px)] flex items-center relative
+       dark:bg-dark-light
+       "
       >
         <Container className="hidden sm:block h-full py-10" sm>
           <div
@@ -33,17 +34,18 @@ function HeroSection() {
           >
             <Flex className="flex-col justify-between hidden lg:flex">
               <div>
-                <Text variant="primary" className="">
+                <Text variant="primary" className="dark:text-dark-text-light">
                   Hi, I am
                 </Text>
                 <Text
                   as="h1"
-                  className="text-[35px]  rounded-md items-center  text-secondary w-max leading-none whitespace-norap"
+                  className="text-[35px]  rounded-md items-center
+                    text-secondary dark:text-dark-text w-max leading-none whitespace-norap"
                 >
                   Shafique Malik
                 </Text>
               </div>
-              <Flex className="uppercase gap-2 items-center text-primary">
+              <Flex className="uppercase gap-2 items-center text-primary dark:text-dark-text">
                 <Text className="text-[40px]">7+</Text>
                 <Flex className="flex-col">
                   <Text>Years</Text>
@@ -51,7 +53,10 @@ function HeroSection() {
                 </Flex>
               </Flex>
 
-              <SocialIcons className="gap-5 md:gap-10" />
+              <SocialIcons
+                className="gap-5 md:gap-10 "
+                iconClassName="dark:text-dark-text"
+              />
             </Flex>
             <div className="  rounded-full flex-1 flex justify-center flex-col items-center">
               <Image
@@ -60,17 +65,20 @@ function HeroSection() {
                 width={400}
                 height={500}
                 loading="eager"
-                className="w-full min-w-[200px] rounded-full max-w-[80%] lg:max-w-[200px] bg-primary"
+                className="w-full min-w-[200px] rounded-full max-w-[80%] lg:max-w-[200px] bg-primary
+                dark:bg-dark
+                "
               />
             </div>
             <Flex className="flex-col justify-center gap-5">
               <div className="lg:hidden">
-                <Text variant="primary" className="">
+                <Text variant="primary" className="dark:text-dark-text-light">
                   Hi, I am
                 </Text>
                 <Text
                   as="h1"
-                  className="text-[35px]  rounded-md items-center  text-secondary w-max leading-none whitespace-norap"
+                  className="text-[35px]  rounded-md items-center 
+                   text-secondary w-max dark:text-dark-text leading-none whitespace-norap"
                 >
                   Shafique Malik
                 </Text>
@@ -89,7 +97,7 @@ function HeroSection() {
 
               <Flex className="gap-3 flex-col text-center  mt-5 ">
                 <a href="#contact-section" className="w-full">
-                  <Button primary rounded className="w-full">
+                  <Button primary rounded className="w-full ">
                     Contact Me
                   </Button>
                 </a>

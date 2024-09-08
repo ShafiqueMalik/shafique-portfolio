@@ -13,7 +13,7 @@ function FloatingInfoSection() {
     <div
       className="absolute z-10 -translate-x-1/2 left-[50%] bottom-0 translate-y-1/2 shadow-2xl 
  w-[90vw] sm:w-full max-w-[900px] rounded-[20px] sm:rounded-full py-6 px-2 mob:px-5 
- min-[850px]:px-10 bg-white  gap-4 sm:gap-8"
+ min-[850px]:px-10 bg-white dark:text-dark-text   gap-4 sm:gap-8 dark:bg-dark/90 dark:shadow dark:shadow-gray-700"
     >
       <Image
         src={APP_IMAGES.malik}
@@ -26,21 +26,28 @@ function FloatingInfoSection() {
       <div className="block sm:hidden">
         <Text
           as="h1"
-          className="text-[30px] text-center mb-2  rounded-md items-center  text-primary mt-5 leading-none whitespace-norap"
+          className="text-[30px] text-center mb-2 
+           rounded-md items-center  text-primary  mt-5 leading-none whitespace-norap
+          dark:text-dark-text
+           "
         >
           Shafique Malik
         </Text>
         <Text
           as="h1"
-          className="text-sm text-secondary text-center  italic leading-none"
+          className="text-sm text-secondary dark:text-dark-text-light text-center  italic leading-none"
         >
           Front End & Javascript Dev
         </Text>
       </div>
       <div className="flex justify-center mt-6 sm:mt-0 divide-x-2">
         <Flex className="gap-2 items-center sm:gap-3 flex-1 justify-center">
-          <div className="bg-primary p-2 rounded-full  hidden min-[660px]:block">
-            <RiMedalLine className="text-white text-xl  min-[850px]:text-3xl" />
+          <div
+            className="bg-primary text-white p-2 rounded-full  hidden min-[660px]:block
+          dark:bg-white  dark:text-dark
+          "
+          >
+            <RiMedalLine className="  text-xl  min-[850px]:text-3xl" />
           </div>
           <Flex className="flex-col items-center">
             <Text
@@ -49,14 +56,22 @@ function FloatingInfoSection() {
             >
               7+ years Job
             </Text>
-            <Text as="h2" variant="primary" className="text-xs sm:text-base">
+            <Text
+              as="h2"
+              variant="primary"
+              className="text-xs sm:text-base dark:text-dark-text-light"
+            >
               Experience
             </Text>
           </Flex>
         </Flex>
         <Flex className="gap-2 items-center sm:gap-3 flex-1 justify-center">
-          <div className="bg-primary p-2 rounded-full hidden min-[660px]:block">
-            <AiOutlineFileDone className="text-white text-xl  min-[850px]:text-3xl  " />
+          <div
+            className="bg-primary text-white   p-2 rounded-full hidden min-[660px]:block
+          dark:bg-white  dark:text-dark
+          "
+          >
+            <AiOutlineFileDone className=" text-xl  min-[850px]:text-3xl  " />
           </div>
           <Flex className="flex-col items-center">
             <Text
@@ -65,14 +80,22 @@ function FloatingInfoSection() {
             >
               100+ Projects
             </Text>
-            <Text as="h2" variant="primary" className="text-xs sm:text-base">
+            <Text
+              as="h2"
+              variant="primary"
+              className="text-xs sm:text-base dark:text-dark-text-light"
+            >
               Completed
             </Text>
           </Flex>
         </Flex>
         <Flex className="gap-2 items-center sm:gap-3 flex-1 justify-center">
-          <div className="bg-primary p-2 rounded-full  hidden min-[660px]:block">
-            <MdSupportAgent className="text-white text-xl  min-[850px]:text-3xl " />
+          <div
+            className="bg-primary text-white  p-2 rounded-full  hidden min-[660px]:block
+          dark:bg-white  dark:text-dark
+          "
+          >
+            <MdSupportAgent className="  text-xl  min-[850px]:text-3xl " />
           </div>
           <Flex className="flex-col items-center">
             <Text
@@ -81,7 +104,11 @@ function FloatingInfoSection() {
             >
               Support
             </Text>
-            <Text as="h2" variant="primary" className="text-xs sm:text-base">
+            <Text
+              as="h2"
+              variant="primary"
+              className="text-xs sm:text-base dark:text-dark-text-light"
+            >
               Online 24/7
             </Text>
           </Flex>

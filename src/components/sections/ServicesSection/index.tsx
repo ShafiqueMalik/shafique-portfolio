@@ -11,28 +11,34 @@ import {
 const services = [
   {
     title: "Responsive Websites",
-    icon: <FaLaptopCode className="w-12 h-12 text-blue-600" />,
+    icon: (
+      <FaLaptopCode className="w-12 h-12 text-blue-600 dark:text-dark-text" />
+    ),
     description: "Creating fully responsive and mobile-friendly websites.",
   },
   {
     title: "ReactJS / NextJS",
-    icon: <FaReact className="w-12 h-12 text-blue-600" />,
+    icon: <FaReact className="w-12 h-12 text-blue-600 dark:text-dark-text" />,
     description:
       "Building dynamic and modern web applications with React and Next.js.",
   },
   {
     title: "Theme Development",
-    icon: <FaWordpress className="w-12 h-12 text-blue-600" />,
+    icon: (
+      <FaWordpress className="w-12 h-12 text-blue-600 dark:text-dark-text" />
+    ),
     description: "Custom theme development for WordPress and other platforms.",
   },
   {
     title: "REST API",
-    icon: <FaServer className="w-12 h-12 text-blue-600" />,
+    icon: <FaServer className="w-12 h-12 text-blue-600 dark:text-dark-text" />,
     description: "Designing and developing RESTful APIs for your applications.",
   },
   {
     title: "Google Map JS API",
-    icon: <FaMapMarkedAlt className="w-12 h-12 text-blue-600" />,
+    icon: (
+      <FaMapMarkedAlt className="w-12 h-12 text-blue-600 dark:text-dark-text" />
+    ),
     description:
       "Integrating and customizing Google Maps using the JavaScript API.",
   },
@@ -41,7 +47,7 @@ const services = [
 const ServicesSection = () => {
   return (
     <section
-      className=" scroll-mt-[64px] py-12 lg:py-16 "
+      className=" scroll-mt-[64px] py-12 lg:py-16 dark:bg-dark"
       id="services-section"
     >
       <Container className="" sm>
@@ -57,13 +63,16 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transform hover:scale-105 transition-transform duration-300"
+              className="bg-white dark:bg-dark-light 
+               rounded-lg shadow-lg p-6 hover:shadow-2xl transform hover:scale-105 transition-transform duration-300"
             >
               <div className="flex  mb-2">{service.icon}</div>
-              <h3 className="text-xl font-semibold  text-gray-800 mb-0">
+              <h3 className="text-xl font-semibold  text-gray-800 mb-0 dark:text-dark-text">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-sm ">{service.description}</p>
+              <p className="text-gray-600 text-sm  dark:text-dark-text-light">
+                {service.description}
+              </p>
             </div>
           ))}
         </div>

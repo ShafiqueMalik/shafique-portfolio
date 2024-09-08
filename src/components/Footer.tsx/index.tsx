@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div className=" pt-5 md:pt-10">
       <div
-        className="bg-primary text-white py-5 md:py-14 pt-10 md:pt-20 "
+        className="bg-primary text-white py-5 md:py-14 pt-10 md:pt-20 dark:bg-dark-light"
         style={{
           clipPath: "polygon(0 26%, 100% 0, 100% 100%, 0% 100%)",
         }}

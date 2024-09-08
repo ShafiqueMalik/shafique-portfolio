@@ -25,7 +25,9 @@ const ExperienceSection = () => {
       className=" scroll-mt-[64px] py-12 lg:py-16 bg-background-light"
     >
       <Container className=" " sm>
-        <p className="text-primary-light  text-center">My Qualification</p>
+        <p className="text-primary-light  text-center dark:text-dark-text-light">
+          My Qualification
+        </p>
         <h2 className="text-4xl font-bold text-center text-secondary mb-5 md:mb-10">
           Awesome Journey
         </h2>

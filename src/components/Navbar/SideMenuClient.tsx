@@ -16,13 +16,15 @@ function SideMenuClient({ onClose }: SideMenuClientProps) {
             <ScrollLink
               onClick={onClose}
               to={item.sectionId}
-              activeClass="bg-primary/10 text-secondary"
+              activeClass="bg-primary/10 text-secondary dark:text-secondary"
               spy={true}
               smooth={true}
               offset={-90}
               duration={500}
               className="flex items-center gap-4 p-3 text-gray-700 hover:bg-primary/10 
-                  hover:text-secondary cursor-pointer rounded-md"
+                  hover:text-secondary cursor-pointer rounded-md
+                  dark:text-dark-text dark:hover:text-secondary
+                  "
             >
               <item.icon className="text-xl" />
               {item.text}

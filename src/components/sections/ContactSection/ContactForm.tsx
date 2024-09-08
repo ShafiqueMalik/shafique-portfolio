@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import Button from "@/components/forms/Button";
 
 export default function ContactForm() {
   const formRef = useRef<any>();
@@ -67,6 +68,8 @@ export default function ContactForm() {
           : "This field is required.",
         message: formData.message ? "" : "This field is required.",
       });
+      setIsFormSubmitting(false);
+
       return;
     }
 
@@ -115,11 +118,15 @@ export default function ContactForm() {
           id="name"
           value={formData.name}
           onChange={handleChange}
-          className={`block w-full bg-transparent px-0 py-2 text-lg text-gray-900 border-0 border-b-2
-             appearance-none focus:outline-none focus:ring-0 peer ${
+          className={`block w-full bg-transparent px-0 py-2 text-lg text-gray-900  border-0 border-b-2
+             appearance-none focus:outline-none focus:ring-0 peer
+             dark:text-dark-text
+             dark:border-gray-400
+             
+             ${
                errors.name
                  ? "border-red-500 focus:border-red-500"
-                 : "border-primary focus:border-primary-light"
+                 : "border-primary focus:border-primary-light dark:focus:border-white"
              }`}
           placeholder=" "
         />
@@ -128,7 +135,10 @@ export default function ContactForm() {
           className="absolute  bg-transparent text-lg text-primary duration-300 transform 
           -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0
            peer-focus:text-primary-light peer-focus:scale-75 peer-placeholder-shown:scale-100
-            peer-placeholder-shown:translate-y-0"
+            peer-placeholder-shown:translate-y-0
+            dark:text-dark-text-light
+            dark:peer-focus:text-dark-text-light
+            "
         >
           Full Name
         </label>
@@ -144,16 +154,22 @@ export default function ContactForm() {
           id="user_email"
           value={formData.user_email}
           onChange={handleChange}
-          className={`block bg-transparent w-full px-0 py-2 text-lg text-gray-900 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer ${
-            errors.user_email
-              ? "border-red-500 focus:border-red-500"
-              : "border-primary focus:border-primary-light"
-          }`}
+          className={`block bg-transparent w-full px-0 py-2 text-lg text-gray-900 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer 
+              dark:text-dark-text
+             dark:border-gray-400
+            ${
+              errors.user_email
+                ? "border-red-500 focus:border-red-500"
+                : "border-primary focus:border-primary-light"
+            }`}
           placeholder=" "
         />
         <label
           htmlFor="user_email"
-          className="absolute text-lg text-primary duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-light peer-focus:scale-75 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0"
+          className="absolute text-lg text-primary duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-light peer-focus:scale-75 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+            dark:text-dark-text-light
+            dark:peer-focus:text-dark-text-light
+          "
         >
           Email
         </label>
@@ -168,16 +184,22 @@ export default function ContactForm() {
           id="message"
           value={formData.message}
           onChange={handleChange}
-          className={`block w-full  bg-transparent px-0 py-2 text-lg text-gray-900 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer ${
-            errors.message
-              ? "border-red-500 focus:border-red-500"
-              : "border-primary focus:border-primary-light"
-          }`}
+          className={`block w-full  bg-transparent px-0 py-2 text-lg text-gray-900 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer 
+              dark:text-dark-text
+             dark:border-gray-400
+            ${
+              errors.message
+                ? "border-red-500 focus:border-red-500"
+                : "border-primary focus:border-primary-light"
+            }`}
           placeholder=" "
         />
         <label
           htmlFor="message"
-          className="absolute text-primary text-lg  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-light peer-focus:scale-75 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0"
+          className="absolute text-primary text-lg  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-light peer-focus:scale-75 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+            dark:text-dark-text-light
+            dark:peer-focus:text-dark-text-light
+          "
         >
           Message
         </label>
@@ -186,8 +208,9 @@ export default function ContactForm() {
         )}
       </div>
 
-      <button
+      <Button
         type="submit"
+        primary
         disabled={isFormSubmitting}
         className="px-6 py-2 text-white bg-primary rounded-lg hover:bg-primary-dark focus:outline-none 
        w-full focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50
@@ -195,7 +218,7 @@ export default function ContactForm() {
        "
       >
         Send Message
-      </button>
+      </Button>
 
       {isSuccess && (
         <p className="mt-5 text-xl text-white bg-green-700/80 p-3 rounded-[10px]">

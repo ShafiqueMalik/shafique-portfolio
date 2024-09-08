@@ -10,7 +10,7 @@ const Progressbar = ({ percentage }: ProgressbarProps) => {
   return (
     <div className="w-full bg-blue-100 rounded-full overflow-hidden">
       <div
-        className="h-2 bg-primary-light text-xs text-white flex items-center justify-center"
+        className="h-2 bg-primary-light  text-xs text-white flex items-center justify-center"
         style={{ width: `${validPercentage}%` }}
       ></div>
     </div>

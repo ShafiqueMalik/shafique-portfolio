@@ -3,16 +3,20 @@ import HireMeButton from "../HireMeButton";
 import Container from "../layout/Container";
 import MenuButton from "./MenuButton";
 import MenuListClient from "./MenuListClient";
+import ThemeSwitch from "../ThemeSwitch";
 
 function Navbar() {
   return (
-    <div className="h-16 shadow fixed left-0 bg-white op right-0 z-50 top-0">
+    <div className="h-16 shadow fixed left-0 bg-white op right-0 z-50 top-0 dark:bg-dark dark:shadow-gray-700">
       <Container className="flex h-full justify-between items-center">
         <MenuButton />
 
         <Logo className="hidden mr-5 lg:ml-0 lg:flex" />
         <MenuListClient />
-        <HireMeButton />
+        <div className="flex items-center gap-2 lg:gap-5">
+          <HireMeButton />
+          <ThemeSwitch />
+        </div>
       </Container>
     </div>
   );

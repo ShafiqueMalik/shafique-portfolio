@@ -13,9 +13,14 @@ import {
 
 const MySkillsSection = () => {
   return (
-    <section id="skills-section" className=" scroll-mt-[64px] py-12 bg-white">
+    <section
+      id="skills-section"
+      className=" scroll-mt-[64px] py-12 bg-white dark:bg-dark"
+    >
       <Container className=" ">
-        <p className="text-primary-light text-center">Why Choose Me</p>
+        <p className="text-primary-light text-center dark:text-dark-text-light">
+          Why Choose Me
+        </p>
         <h2 className="text-4xl font-bold text-center text-secondary mb-5 md:mb-10">
           My Skills & Expertise
         </h2>

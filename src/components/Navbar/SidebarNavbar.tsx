@@ -25,13 +25,15 @@ const SidebarNavbar = ({ open, onClose }: SidebarNavbarProps) => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-[100vh] max-w-[250px]  w-[80vw] bg-white z-50 transform ${
-          open ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 ease-in-out`}
+        className={`fixed top-0 left-0 h-[100vh] max-w-[250px]  w-[80vw] bg-white z-50 transform
+          dark:bg-dark-light dark:text-dark-text
+          ${
+            open ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-300 ease-in-out`}
       >
         {/* Close Button */}
         {open && (
-          <div className="absolute left-[260px] top-2 text-white text-3xl  ">
+          <div className="absolute left-[260px] top-2 text-white  text-3xl  ">
             <button onClick={onClose}>
               <IoMdClose />
             </button>
@@ -55,7 +57,7 @@ const SidebarNavbar = ({ open, onClose }: SidebarNavbarProps) => {
             </div>
 
             {/* Middle Section: Navigation */}
-            <nav className="mb-5 mt-5">
+            <nav className="mb-5 mt-5 ">
               <SideMenuClient onClose={onClose} />
             </nav>
           </div>
