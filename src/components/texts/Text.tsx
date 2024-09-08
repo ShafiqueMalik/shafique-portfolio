@@ -1,4 +1,4 @@
-import React, { ElementType, ReactNode } from "react";
+import React, { ElementType } from "react";
 import { twMerge } from "tailwind-merge";
 
 type TextProps = {

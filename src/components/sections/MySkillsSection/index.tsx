@@ -3,13 +3,6 @@ import Container from "@/components/layout/Container";
 import Flex from "@/components/layout/Flex";
 import Progressbar from "@/components/Progressbar";
 import { backEndMainskillsData, frontEndMainskillsData } from "@/data/appData";
-import {
-  FaLaptopCode,
-  FaReact,
-  FaWordpress,
-  FaServer,
-  FaMapMarkedAlt,
-} from "react-icons/fa";
 
 const MySkillsSection = () => {
   return (

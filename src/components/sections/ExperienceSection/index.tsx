@@ -1,19 +1,5 @@
 import Container from "@/components/layout/Container";
-import Flex from "@/components/layout/Flex";
-import Progressbar from "@/components/Progressbar";
-import {
-  backEndMainskillsData,
-  CompanyHistoryData,
-  EducationHistoryData,
-  frontEndMainskillsData,
-} from "@/data/appData";
-import {
-  FaLaptopCode,
-  FaReact,
-  FaWordpress,
-  FaServer,
-  FaMapMarkedAlt,
-} from "react-icons/fa";
+import { CompanyHistoryData, EducationHistoryData } from "@/data/appData";
 import Timeline from "./Timeline";
 import { IoSchoolOutline } from "react-icons/io5";
 import { IoBriefcaseOutline } from "react-icons/io5";

@@ -1,6 +1,5 @@
 "use client";
 import { navigationData } from "@/data/appData";
-import Link from "next/link";
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 

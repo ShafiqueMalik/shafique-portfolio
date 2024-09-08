@@ -1,12 +1,10 @@
 import Container from "@/components/layout/Container";
 
 import ContactForm from "./ContactForm";
-import { GiSpring } from "react-icons/gi";
 import { socialData } from "@/data/appData";
 import Link from "next/link";
 import Flex from "@/components/layout/Flex";
 import { twMerge } from "tailwind-merge";
-import Button from "@/components/forms/Button";
 import { MdOutlineFileDownload } from "react-icons/md";
 
 const ContactSection = () => {

@@ -4,7 +4,6 @@ import Container from "../layout/Container";
 import Flex from "../layout/Flex";
 import SocialIcons from "../SocialIcons";
 import { navigationData } from "@/data/appData";
-import Link from "next/link";
 
 function Footer() {
   return (

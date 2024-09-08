@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { IoMdClose } from "react-icons/io";
 import { APP_IMAGES } from "../../../public/assets/images";
-import { navigationData } from "@/data/appData";
 import SocialIcons from "../SocialIcons";
-import Link from "next/link";
 import SideMenuClient from "./SideMenuClient";
 import Logo from "../Logo";
 

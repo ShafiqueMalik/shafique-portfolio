@@ -6,7 +6,6 @@ import MySkillsSection from "@/components/sections/MySkillsSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import SocialIcons from "@/components/SocialIcons";
-import Image from "next/image";
 
 export default function Home() {
   return (

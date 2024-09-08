@@ -1,48 +1,6 @@
 // components/ServicesSection.js
 import Container from "@/components/layout/Container";
-import {
-  FaLaptopCode,
-  FaReact,
-  FaWordpress,
-  FaServer,
-  FaMapMarkedAlt,
-} from "react-icons/fa";
-
-const services = [
-  {
-    title: "Responsive Websites",
-    icon: (
-      <FaLaptopCode className="w-12 h-12 text-blue-600 dark:text-dark-text" />
-    ),
-    description: "Creating fully responsive and mobile-friendly websites.",
-  },
-  {
-    title: "ReactJS / NextJS",
-    icon: <FaReact className="w-12 h-12 text-blue-600 dark:text-dark-text" />,
-    description:
-      "Building dynamic and modern web applications with React and Next.js.",
-  },
-  {
-    title: "Theme Development",
-    icon: (
-      <FaWordpress className="w-12 h-12 text-blue-600 dark:text-dark-text" />
-    ),
-    description: "Custom theme development for WordPress and other platforms.",
-  },
-  {
-    title: "REST API",
-    icon: <FaServer className="w-12 h-12 text-blue-600 dark:text-dark-text" />,
-    description: "Designing and developing RESTful APIs for your applications.",
-  },
-  {
-    title: "Google Map JS API",
-    icon: (
-      <FaMapMarkedAlt className="w-12 h-12 text-blue-600 dark:text-dark-text" />
-    ),
-    description:
-      "Integrating and customizing Google Maps using the JavaScript API.",
-  },
-];
+import { servicesData } from "@/data/appData";
 
 const ServicesSection = () => {
   return (
@@ -60,13 +18,15 @@ const ServicesSection = () => {
           user experience.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
-          {services.map((service, index) => (
+          {servicesData.map((service, index) => (
             <div
               key={service.title}
               className="bg-white dark:bg-dark-light 
                rounded-lg shadow-lg p-6 hover:shadow-2xl transform hover:scale-105 transition-transform duration-300"
             >
-              <div className="flex  mb-2">{service.icon}</div>
+              <div className="flex  mb-2">
+                <service.icon className="w-12 h-12 text-blue-600 dark:text-dark-text" />
+              </div>
               <h3 className="text-xl font-semibold  text-gray-800 mb-0 dark:text-dark-text">
                 {service.title}
               </h3>

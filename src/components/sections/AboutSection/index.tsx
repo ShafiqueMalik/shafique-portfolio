@@ -1,11 +1,7 @@
 import React from "react";
-import Container from "../../layout/Container";
 import Text from "../../texts/Text";
 import Flex from "../../layout/Flex";
 import Image from "next/image";
-import Button from "../../forms/Button";
-import { MdOutlineFileDownload } from "react-icons/md";
-import { socialData } from "@/data/appData";
 import SocialIcons from "@/components/SocialIcons";
 import { APP_IMAGES } from "../../../../public/assets/images";
 

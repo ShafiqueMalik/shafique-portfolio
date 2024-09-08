@@ -10,6 +10,13 @@ import { GiSkills } from "react-icons/gi";
 import { IoSchoolOutline } from "react-icons/io5";
 import { IoBriefcaseOutline } from "react-icons/io5";
 import { MdOutlineContactMail } from "react-icons/md";
+import {
+  FaLaptopCode,
+  FaReact,
+  FaWordpress,
+  FaServer,
+  FaMapMarkedAlt,
+} from "react-icons/fa";
 
 export const socialData = [
   {
@@ -37,12 +44,7 @@ export const socialData = [
     icon: FaLinkedin,
     link: "https://www.linkedin.com/in/shafique-malik-17830616b/",
   },
-  // {
-  //     title: "abc",
-  //     subTitle:'abc',
-  //     icon: "abc",
-  //     link: "abc",
-  // },
+
   // {
   //     title: "abc",
   //     subTitle:'abc',
@@ -271,5 +273,35 @@ export const navigationData = [
     text: "Contact Me",
     sectionId: "contact-section",
     icon: MdOutlineContactMail,
+  },
+];
+
+export const servicesData = [
+  {
+    title: "Responsive Websites",
+    icon: FaLaptopCode,
+    description: "Creating fully responsive and mobile-friendly websites.",
+  },
+  {
+    title: "ReactJS / NextJS",
+    icon: FaReact,
+    description:
+      "Building dynamic and modern web applications with React and Next.js.",
+  },
+  {
+    title: "Theme Development",
+    icon: FaWordpress,
+    description: "Custom theme development for WordPress and other platforms.",
+  },
+  {
+    title: "REST API",
+    icon: FaServer,
+    description: "Designing and developing RESTful APIs for your applications.",
+  },
+  {
+    title: "Google Map JS API",
+    icon: FaMapMarkedAlt,
+    description:
+      "Integrating and customizing Google Maps using the JavaScript API.",
   },
 ];
