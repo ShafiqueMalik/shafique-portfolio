@@ -15,7 +15,7 @@ function SideMenuClient({ onClose }: SideMenuClientProps) {
             <ScrollLink
               onClick={onClose}
               to={item.sectionId}
-              activeClass="bg-primary/10 text-secondary dark:text-secondary"
+              activeClass="bg-primary/10 text-secondary dark:text-dark-text dark:bg-dark"
               spy={true}
               smooth={true}
               offset={-90}
