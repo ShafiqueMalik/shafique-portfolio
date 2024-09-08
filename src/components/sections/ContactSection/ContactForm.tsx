@@ -43,7 +43,7 @@ export default function ContactForm() {
     } else if (name === "user_email" && !validateEmail(value)) {
       setErrors((prev) => ({
         ...prev,
-        user_email: "Please enter a valid user_email address.",
+        user_email: "Please enter a valid email address.",
       }));
     } else {
       setErrors((prev) => ({

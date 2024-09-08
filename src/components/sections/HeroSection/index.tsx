@@ -22,8 +22,8 @@ function HeroSection() {
 
       <div
         id="home-section"
-        className="scroll-mt-[64px] bg-background-light min-h-[250px] max-h-[550px] h-[50vh] mt-[64px]
-       sm:h-[calc(100vh-64px)] flex items-center relative
+        className="scroll-mt-[64px] bg-background-light min-h-[450px] max-h-[550px] h-[50vh] mt-[64px]
+       sm:h-[calc(100vh-64px)]  flex items-center relative
        dark:bg-dark-light
        "
       >
@@ -119,8 +119,17 @@ function HeroSection() {
             </Flex>
           </div>
         </Container>
+
+        {/* Dark Mode Background */}
         <div
-          className={`absolute bg-contain block sm:hidden  inset-0`}
+          className={`absolute bg-contain  sm:hidden  inset-0 hidden dark:block`}
+          style={{
+            backgroundImage: `linear-gradient(rgba(3, 30, 56, 0.7), rgba(6, 52, 97, 0.8)), url(${APP_IMAGES.banner})`,
+          }}
+        />
+        {/* Light Mode Background */}
+        <div
+          className={`absolute bg-contain block sm:hidden  inset-0 dark:hidden`}
           style={{
             backgroundImage: `linear-gradient(rgba(6, 52, 97, 0.5), rgba(6, 52, 97, 0.8)), url(${APP_IMAGES.banner})`,
           }}

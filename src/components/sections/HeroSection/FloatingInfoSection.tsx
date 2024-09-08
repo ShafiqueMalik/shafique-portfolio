@@ -13,7 +13,7 @@ function FloatingInfoSection() {
     <div
       className="absolute z-10 -translate-x-1/2 left-[50%] bottom-0 translate-y-1/2 shadow-2xl 
  w-[90vw] sm:w-full max-w-[900px] rounded-[20px] sm:rounded-full py-6 px-2 mob:px-5 
- min-[850px]:px-10 bg-white/80 dark:text-dark-text  
+ min-[850px]:px-10 bg-white/80 sm:bg-white dark:text-dark-text  
   gap-4 sm:gap-8 dark:bg-dark/80 dark:shadow dark:shadow-gray-700"
     >
       <Image

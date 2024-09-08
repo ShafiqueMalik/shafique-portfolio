@@ -10,7 +10,7 @@ export default function PortfolioCard({ project }: PortfolioCardProps) {
   return (
     <div
       className="relative group overflow-hidden  rounded-lg shadow-lg transform transition-transform
-     duration-300 hover:scale-105 dark:shadow-gray-800"
+     duration-300 hover:scale-105 dark:shadow-none dark:border dark:border-gray-400"
     >
       <Image
         src={project.thumbnail}
