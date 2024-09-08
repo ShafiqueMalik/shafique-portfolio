@@ -22,7 +22,9 @@ const ServicesSection = () => {
             <div
               key={service.title}
               className="bg-white dark:bg-dark-light 
-               rounded-lg shadow-lg p-6 hover:shadow-2xl transform hover:scale-105 transition-transform duration-300"
+               rounded-lg shadow-lg border border-gray-100
+               dark:border-none
+               p-6 hover:shadow-2xl transform hover:scale-105 transition-transform duration-300"
             >
               <div className="flex  mb-2">
                 <service.icon className="w-12 h-12 text-blue-600 dark:text-dark-text" />

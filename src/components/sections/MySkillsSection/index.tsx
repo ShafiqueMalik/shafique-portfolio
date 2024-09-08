@@ -34,7 +34,7 @@ const MySkillsSection = () => {
               ))}
             </ul>
           </div>
-          <div className="bg-gray-200 w-[1px]" />
+          <div className="bg-gray-200 w-[1px]  dark:bg-gray-700" />
           <div>
             <h4 className="text-xl font-medium lg:text-3xl text-center mb-5">
               BACK-END SKILLS (Secondary)

@@ -25,7 +25,7 @@ const ExperienceSection = () => {
             </h4>
             <Timeline timelineData={CompanyHistoryData} />
           </div>
-          <div className="bg-gray-200 w-[1px]" />
+          <div className="bg-gray-200 w-[1px] dark:bg-gray-700" />
           <div>
             <h4 className="text-3xl text-center font-medium  flex gap-3 items-center">
               <IoSchoolOutline />

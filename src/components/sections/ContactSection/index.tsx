@@ -21,7 +21,7 @@ const ContactSection = () => {
           className="grid border-2 rounded-3xl 
         lg:rounded-none grid-cols-1 md:grid-cols-[1fr_1fr] lg:rounded-tr-[80px] lg:rounded-bl-[80px]  
         overflow-hidden
-        
+        dark:border-gray-600
         "
         >
           <div className=" bg-primary/10 px-5 md:px-10 py-10 dark:bg-dark">

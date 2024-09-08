@@ -35,7 +35,7 @@ function SocialIcons({
             className="text-xl relative"
             rel="noreferrer"
           >
-            <item.icon className={twMerge("text-secondary ", iconClassName)} />
+            <item.icon className={twMerge("text-secondary", iconClassName)} />
           </a>
         </li>
       ))}

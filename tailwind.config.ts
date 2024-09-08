@@ -45,7 +45,7 @@ const config: Config = {
         dark: {
           DEFAULT: "#121212",
           light: "#1B1F24",
-          text: "white",
+          text: "#e4e4e4",
           "text-light": "#bec0c3",
         },
       },

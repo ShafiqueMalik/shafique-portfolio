@@ -13,7 +13,8 @@ function FloatingInfoSection() {
     <div
       className="absolute z-10 -translate-x-1/2 left-[50%] bottom-0 translate-y-1/2 shadow-2xl 
  w-[90vw] sm:w-full max-w-[900px] rounded-[20px] sm:rounded-full py-6 px-2 mob:px-5 
- min-[850px]:px-10 bg-white dark:text-dark-text   gap-4 sm:gap-8 dark:bg-dark/90 dark:shadow dark:shadow-gray-700"
+ min-[850px]:px-10 bg-white/80 dark:text-dark-text  
+  gap-4 sm:gap-8 dark:bg-dark/80 dark:shadow dark:shadow-gray-700"
     >
       <Image
         src={APP_IMAGES.malik}
@@ -21,7 +22,10 @@ function FloatingInfoSection() {
         width={80}
         height={80}
         loading="eager"
-        className="size-[80px] block sm:hidden absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full  bg-primary"
+        className="size-[80px] block sm:hidden absolute top-0 left-1/2 -translate-x-1/2 
+        -translate-y-1/2 rounded-full  bg-primary
+        dark:bg-dark
+        "
       />
       <div className="block sm:hidden">
         <Text
@@ -44,7 +48,7 @@ function FloatingInfoSection() {
         <Flex className="gap-2 items-center sm:gap-3 flex-1 justify-center">
           <div
             className="bg-primary text-white p-2 rounded-full  hidden min-[660px]:block
-          dark:bg-white  dark:text-dark
+          dark:bg-primary  dark:text-dark-text 
           "
           >
             <RiMedalLine className="  text-xl  min-[850px]:text-3xl" />
@@ -68,7 +72,7 @@ function FloatingInfoSection() {
         <Flex className="gap-2 items-center sm:gap-3 flex-1 justify-center">
           <div
             className="bg-primary text-white   p-2 rounded-full hidden min-[660px]:block
-          dark:bg-white  dark:text-dark
+          dark:bg-primary  dark:text-dark-text
           "
           >
             <AiOutlineFileDone className=" text-xl  min-[850px]:text-3xl  " />
@@ -92,7 +96,7 @@ function FloatingInfoSection() {
         <Flex className="gap-2 items-center sm:gap-3 flex-1 justify-center">
           <div
             className="bg-primary text-white  p-2 rounded-full  hidden min-[660px]:block
-          dark:bg-white  dark:text-dark
+          dark:bg-primary  dark:text-dark-text
           "
           >
             <MdSupportAgent className="  text-xl  min-[850px]:text-3xl " />
