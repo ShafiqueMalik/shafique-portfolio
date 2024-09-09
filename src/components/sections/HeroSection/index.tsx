@@ -122,7 +122,7 @@ function HeroSection() {
 
         {/* Dark Mode Background */}
         <div
-          className={`absolute bg-contain  sm:hidden  inset-0 hidden dark:block`}
+          className={`absolute bg-contain  sm:hidden  inset-0 hidden dark:block sm:dark:hidden`}
           style={{
             backgroundImage: `linear-gradient(rgba(3, 30, 56, 0.7), rgba(6, 52, 97, 0.8)), url(${APP_IMAGES.banner})`,
           }}
