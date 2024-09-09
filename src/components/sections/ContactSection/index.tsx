@@ -21,14 +21,15 @@ const ContactSection = () => {
           className="grid border-2 rounded-3xl 
         lg:rounded-none grid-cols-1 md:grid-cols-[1fr_1fr] lg:rounded-tr-[80px] lg:rounded-bl-[80px]  
         overflow-hidden
-        dark:border-gray-600
+        dark:border-gray-900
+        shadow shadow-gray-800
         "
         >
-          <div className=" bg-primary/10 px-5 md:px-10 py-10 dark:bg-dark">
+          <div className=" bg-primary/10 px-5 md:px-10 py-10 dark:bg-dark-light">
             <h3 className="text-2xl font-medium">Send Me A Message</h3>
             <ContactForm />
           </div>
-          <div className="bg-primary text-white  px-5 md:px-10 py-10 dark:bg-dark-light">
+          <div className="bg-primary text-white  px-5 md:px-10 py-10 dark:bg-dark">
             <h3 className="text-2xl font-medium mb-5">Contact Information</h3>
 
             <ul className="space-y-4 ">
