@@ -21,7 +21,7 @@ import {
 export const socialData = [
   {
     title: "Address",
-    subTitle: "Kashmir Colony No.2 Chanda Qilla Gujranwala, Punjaba Pakistan",
+    subTitle: "Kashmir Colony No.2 Chanda Qilla Gujranwala, Punjab Pakistan",
     icon: IoLocationOutline,
     link: "http://maps.google.com?q=32.099661,74.195231",
   },
