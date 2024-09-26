@@ -33,6 +33,8 @@ export default function PortfolioCard({ project }: PortfolioCardProps) {
         <Link
           href={project.link}
           className="text-white underline flex items-center"
+          target="_blank"
+          rel="noreferrer"
         >
           <span>Preview</span>
           <MdOutlineArrowOutward />

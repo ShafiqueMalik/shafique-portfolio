@@ -10,6 +10,8 @@ function MenuButton() {
       <button
         className="block text-3xl lg:hidden"
         onClick={() => setOpen(true)}
+        aria-label="Open menu"
+        title="Open Menu"
       >
         <MdMenuOpen />
       </button>

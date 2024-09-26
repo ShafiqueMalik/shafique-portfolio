@@ -56,7 +56,7 @@ function Footer() {
               />
             </div>
             <div>
-              <h6 className="text-2xl text-center font-medium">Menu</h6>
+              <h5 className="text-2xl text-center font-medium">Menu</h5>
               <Flex
                 as="ul"
                 className="items-center flex-col justify-center text-gray-300"

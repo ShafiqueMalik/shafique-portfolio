@@ -26,7 +26,7 @@ export default function ThemeSwitch() {
 
   if (resolvedTheme === "dark") {
     return (
-      <button className="text-yellow-500 text-xl">
+      <button className="text-yellow-500 text-xl" aria-label="Toggle Dark Mode">
         <FiSun className=" " onClick={() => setTheme("light")} />
       </button>
     );

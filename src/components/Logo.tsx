@@ -9,7 +9,7 @@ type LogoProps = {
 };
 function Logo({ light = false, className }: LogoProps) {
   return (
-    <Link href={`#home-section`}>
+    <Link href={`#home-section`} aria-label="Logo">
       <div
         className={twMerge(
           `flex gap-2 items-center text-primary text-xl  font-bold 
