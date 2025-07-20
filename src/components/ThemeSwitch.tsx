@@ -3,7 +3,6 @@
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import Image from "next/image";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
@@ -11,32 +10,71 @@ export default function ThemeSwitch() {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted)
+  if (!mounted) {
     return (
-      <Image
-        src="data:image/svg+xml;base64,PHN2ZyBzdHJva2U9IiNGRkZGRkYiIGZpbGw9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMCIgdmlld0JveD0iMCAwIDI0IDI0IiBoZWlnaHQ9IjIwMHB4IiB3aWR0aD0iMjAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHJ4PSIyIj48L3JlY3Q+PC9zdmc+Cg=="
-        width={36}
-        height={36}
-        sizes="36x36"
-        alt="Loading Light/Dark Toggle"
-        priority={false}
-        title="Loading Light/Dark Toggle"
+      <div 
+        className="w-5 h-5" 
+        aria-hidden="true" 
       />
     );
-
-  if (resolvedTheme === "dark") {
-    return (
-      <button className="text-yellow-500 text-xl" aria-label="Toggle Dark Mode">
-        <FiSun className=" " onClick={() => setTheme("light")} />
-      </button>
-    );
   }
 
-  if (resolvedTheme === "light") {
-    return (
-      <button className="text-gray-500 text-xl">
-        <FiMoon className="" onClick={() => setTheme("dark")} />
-      </button>
-    );
-  }
+  const isDark = resolvedTheme === "dark";
+  const nextTheme = isDark ? "light" : "dark";
+  const Icon = isDark ? FiSun : FiMoon;
+
+  return (
+    <button
+      className={`text-xl w-5 ${
+        isDark ? "text-yellow-500" : "text-gray-500"
+      }`}
+      aria-label={`Switch to ${nextTheme} mode`}
+      title={`Switch to ${nextTheme} mode`}
+      onClick={() => setTheme(nextTheme)}
+    >
+      <Icon aria-hidden="true" />
+    </button>
+  );
 }
+// "use client";
+
+// import { FiSun, FiMoon } from "react-icons/fi";
+// import { useState, useEffect } from "react";
+// import { useTheme } from "next-themes";
+// import Image from "next/image";
+
+// export default function ThemeSwitch() {
+//   const [mounted, setMounted] = useState(false);
+//   const { setTheme, resolvedTheme } = useTheme();
+
+//   useEffect(() => setMounted(true), []);
+
+//   if (!mounted){
+//     return <div className="size-5"/>;
+//   }
+//   if (resolvedTheme === "dark") {
+//     return (
+//       <button
+//         className="text-yellow-500 text-xl w-5"
+//         aria-label="Switch to light mode"
+//         title="Light mode"
+//         onClick={() => setTheme("light")}
+//       >
+//         <FiSun aria-hidden="true" />
+//       </button>
+//     );
+//   }
+
+//   if (resolvedTheme === "light") {
+//     return (
+//       <button
+//         className="text-gray-500 text-xl w-5"
+//         aria-label="Switch to dark mode"
+//         title="Dark mode"
+//         onClick={() => setTheme("dark")}
+//       >
+//         <FiMoon aria-hidden="true" />
+//       </button>
+//     );
+//   }
+// }

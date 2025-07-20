@@ -18,7 +18,7 @@ function FloatingInfoSection() {
     >
       <Image
         src={APP_IMAGES.malik}
-        alt="Shafique Malik"
+        alt="Shafique Malik, Frontend Developer reactjs/nextjs"
         width={80}
         height={80}
         loading="eager"
@@ -50,8 +50,10 @@ function FloatingInfoSection() {
             className="bg-primary text-white p-2 rounded-full  hidden min-[660px]:block
           dark:bg-primary  dark:text-dark-text 
           "
+            role="img"
+           aria-label="Experience"
           >
-            <RiMedalLine className="  text-xl  min-[850px]:text-3xl" />
+            <RiMedalLine className="  text-xl  min-[850px]:text-3xl" aria-hidden="true" />
           </div>
           <Flex className="flex-col items-center">
             <Text
@@ -74,8 +76,10 @@ function FloatingInfoSection() {
             className="bg-primary text-white   p-2 rounded-full hidden min-[660px]:block
           dark:bg-primary  dark:text-dark-text
           "
+            role="img"
+           aria-label="Projects"
           >
-            <AiOutlineFileDone className=" text-xl  min-[850px]:text-3xl  " />
+            <AiOutlineFileDone className=" text-xl  min-[850px]:text-3xl  " aria-hidden="true" />
           </div>
           <Flex className="flex-col items-center">
             <Text
@@ -98,8 +102,10 @@ function FloatingInfoSection() {
             className="bg-primary text-white  p-2 rounded-full  hidden min-[660px]:block
           dark:bg-primary  dark:text-dark-text
           "
+           role="img"
+           aria-label="Support Agent"
           >
-            <MdSupportAgent className="  text-xl  min-[850px]:text-3xl " />
+            <MdSupportAgent aria-hidden="true" className="  text-xl  min-[850px]:text-3xl " />
           </div>
           <Flex className="flex-col items-center">
             <Text

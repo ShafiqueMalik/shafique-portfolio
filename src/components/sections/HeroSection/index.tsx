@@ -64,7 +64,7 @@ async function HeroSection() {
             <div className="  rounded-full flex-1 flex justify-center flex-col items-center">
               <Image
                 src={APP_IMAGES.malik}
-                alt="Shafique Malik"
+                alt="Shafique Malik, Frontend Developer reactjs/nextjs"
                 width={400}
                 height={500}
                 loading="eager"

@@ -45,7 +45,7 @@ const SidebarNavbar = ({ open, onClose }: SidebarNavbarProps) => {
             <div className="flex flex-col items-center text-center mb-4">
               <Image
                 src={APP_IMAGES.malik}
-                alt="Profile"
+                alt="Shafique Malik, Frontend Developer reactjs/nextjs"
                 width={60}
                 height={60}
                 className="w-16 h-16 bg-primary rounded-full mb-1"

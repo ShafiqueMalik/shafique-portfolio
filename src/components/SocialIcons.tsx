@@ -35,6 +35,7 @@ function SocialIcons({
             className="text-xl relative"
             rel="noreferrer"
             aria-label={item.title}
+            title={item.title}
           >
             <item.icon className={twMerge("text-secondary", iconClassName)} />
           </a>

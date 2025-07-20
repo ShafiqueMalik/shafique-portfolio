@@ -18,7 +18,7 @@ function AboutSection() {
         >
           <Image
             src={APP_IMAGES.malik}
-            alt="Shafique Malik"
+            alt="Shafique Malik, Frontend Developer reactjs/nextjs"
             width={400}
             height={500}
             loading="eager"
@@ -76,7 +76,7 @@ function AboutSection() {
               </Flex>
             </div>
             <SocialIcons
-              className="gap-5 mt-10 [&>*]:bg-secondar"
+              className="gap-5 mt-10 [&>*]:bg-secondar z-10"
               iconClassName="text-white "
               rounded
             />
