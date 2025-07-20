@@ -11,8 +11,11 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import SocialIcons from "@/components/SocialIcons";
 import Link from "next/link";
 import Head from "next/head";
+import { sanity } from "@/lib/sanity";
 
-function HeroSection() {
+async function HeroSection() {
+  const hero = await sanity.fetch(`*[_type == "hero"][0]`);
+  console.log("hero", hero);
   return (
     <>
       <Head>
@@ -42,11 +45,11 @@ function HeroSection() {
                   className="text-[35px]  rounded-md items-center
                     text-secondary dark:text-dark-text w-max leading-none whitespace-norap"
                 >
-                  Shafique Malik
+                  {hero?.name}
                 </Text>
               </div>
               <Flex className="uppercase gap-2 items-center text-primary dark:text-dark-text">
-                <Text className="text-[40px]">7+</Text>
+                <Text className="text-[40px]">{hero?.experience}+</Text>
                 <Flex className="flex-col">
                   <Text>Years</Text>
                   <Text>Experience</Text>
@@ -80,12 +83,12 @@ function HeroSection() {
                   className="text-[35px]  rounded-md items-center 
                    text-secondary w-max dark:text-dark-text leading-none whitespace-norap"
                 >
-                  Shafique Malik
+                  {hero?.name}
                 </Text>
               </div>
               <div className="max-w-[264px] whitespace-nowrap">
                 <Text as="h1" className="text-[25px] leading-none">
-                  Front End & Javascript
+                  {hero?.profileTitle}
                 </Text>
                 <Text
                   as="p"
