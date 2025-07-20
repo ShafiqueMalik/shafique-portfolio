@@ -56,10 +56,10 @@ function AboutSection() {
               </Text>
             </div>
             <Text className="mt-5 text-sm lg:text-base dark:text-dark-text-light">
-              I'm a professional Front End Developer based in Pakistan Lahore. I
+              I&#39;m a professional Front End Developer based in Pakistan Lahore. I
               describe myself as a developer who loves coding, open source, and
-              the web platform. Currently I'm working at a company called
-              Systems Ltd, as a Front End (ReactJS) Engineer.
+              the web platform. Currently I&#39;m working at a company called
+              Systems Ltd, as a Front End (React.js & Next.js) Developer.
             </Text>
             <div className="mt-5 italic space-y-2 md:mt-10">
               <Flex className="items-center gap-3 sm:gap-5">

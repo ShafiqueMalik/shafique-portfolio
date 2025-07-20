@@ -15,7 +15,7 @@ const PortfolioSection = () => {
         <h2 className="text-4xl font-bold text-center text-secondary mb-5 md:mb-10">
           Recent Works
         </h2>
-        <ul className="flex flex-wrap justify-center gap-y-2 gap-5 md:gap-8 mb-10 items-center">
+        {/* <ul className="flex flex-wrap justify-center gap-y-2 gap-5 md:gap-8 mb-10 items-center">
           {ProjectCategories.map((category, idx) => (
             <li
               key={category}
@@ -25,7 +25,7 @@ const PortfolioSection = () => {
                 className={`px-3 py-1 border-primary dark:border-dark-text-light border disabled:opacity-30 ${
                   idx === 0
                     ? "text-secondary border-secondary dark:text-dark-text dark:border-dark-text"
-                    : ""
+                    : "cursor-not-allowed"
                 }`}
                 disabled={idx !== 0}
                 title={idx !== 0 ? "Coming Soon" : undefined}
@@ -34,7 +34,7 @@ const PortfolioSection = () => {
               </button>
             </li>
           ))}
-        </ul>
+        </ul> */}
         <div className="grid grid-cols-1 mob-lg:grid-cols-2 md:grid-cols-3 gap-10 md:gap-10 ">
           {ProjectsData.ui.map((project: any, index: number) => (
             <PortfolioCard key={project.name} project={project} />

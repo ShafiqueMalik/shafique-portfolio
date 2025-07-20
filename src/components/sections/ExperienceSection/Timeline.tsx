@@ -37,10 +37,10 @@ export default function Timeline({ timelineData }: TimelineProps) {
                 <h3 className="text-lg font-semibold text-gray-900 leading-none dark:text-dark-text">
                   {event.title}
                 </h3>
-                <ul className={twMerge(`  `, event.description?.length>1 ? "list-disc pl-4" : "")}>
+                <ul className={twMerge(` pb-[10px] `, event.description?.length>1 ? "list-disc pl-4" : "")}>
                   {event.description?.reverse()?.map((desc: string, indx) => (
                     <li key={desc}>
-                      <p className=" pb-[10px] text-gray-700 text-sm font-light italic dark:text-dark-text-light">
+                      <p className="  text-gray-700 text-sm font-light italic dark:text-dark-text-light">
                         {desc}
                       </p>
                     </li>
