@@ -63,19 +63,16 @@ export const frontEndMainskillsData = [
     value: 95,
   },
   {
-    skill: "Javascript/ES6",
+    skill: "Javascript/Typescript",
     value: 95,
   },
-  {
-    skill: "Bootstrap",
-    value: 95,
-  },
+
   {
     skill: "React.js",
     value: 95,
   },
   {
-    skill: "Next.js 14",
+    skill: "Next.js 15+",
     value: 90,
   },
   {
@@ -86,7 +83,10 @@ export const frontEndMainskillsData = [
     skill: "Material UI",
     value: 85,
   },
-
+  {
+    skill: "Bootstrap",
+    value: 95,
+  },
   {
     skill: "React Bootstrap",
     value: 95,
@@ -99,10 +99,7 @@ export const frontEndMainskillsData = [
     skill: "React Testing Library",
     value: 80,
   },
-  {
-    skill: "React Typescript",
-    value: 90,
-  },
+
 ];
 export const backEndMainskillsData = [
   {
@@ -129,40 +126,40 @@ export const backEndMainskillsData = [
 
 export const CompanyHistoryData = [
   {
-    date: "Oct 2022 - Present",
     title: "Systems Limited",
-    description: "Consultant Developer",
+    date: "Oct 2022 - Present",
+    description: ["Consultant Developer", "Senior Consultant Developer"],
   },
   {
     title: "Royal Cyber Inc.",
-    description: "UI Developer",
     date: "Jan 2022 - Oct 2022",
+    description: ["Front End - UI Developer"],
   },
   {
     title: "PHENOLOGIX",
-    description: "Front End Developer",
     date: "Nov 2018 - Jan 2021",
+    description: ["Front End Developer"],
   },
   {
     title: "TAX & SOFTWARE HUB",
-    description: "Junior Dot Net Developer",
     date: "Feb 2018 - Aug 2018",
+    description: ["Junior Dot Net Developer"],
   },
 ];
 export const EducationHistoryData = [
   {
     title: "BSc in IT",
-    description: "Computer Science",
+    description: ["Computer Science"],
     date: "2014 - 2018",
   },
   {
     title: "ICS (Intermediate of Computer Science)",
-    description: "Computer Science",
+    description: ["Computer Science"],
     date: "2012 - 2014",
   },
   {
     title: "Matriculation In Science",
-    description: "Science",
+    description: ["Science"],
     date: "2010 - 2012",
   },
 ];

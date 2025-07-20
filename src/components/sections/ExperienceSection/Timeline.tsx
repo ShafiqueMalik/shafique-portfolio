@@ -1,7 +1,9 @@
+import { twMerge } from "tailwind-merge";
+
 type TimelineItem = {
   date: string;
   title: string;
-  description: string;
+  description: string[];
 };
 
 type TimelineProps = {
@@ -35,9 +37,16 @@ export default function Timeline({ timelineData }: TimelineProps) {
                 <h3 className="text-lg font-semibold text-gray-900 leading-none dark:text-dark-text">
                   {event.title}
                 </h3>
-                <p className=" pb-[10px] text-gray-700 text-sm font-light italic dark:text-dark-text-light">
-                  {event.description}
-                </p>
+                <ul className={twMerge(`  `, event.description?.length>1 ? "list-disc pl-4" : "")}>
+                  {event.description?.reverse()?.map((desc: string, indx) => (
+                    <li key={desc}>
+                      <p className=" pb-[10px] text-gray-700 text-sm font-light italic dark:text-dark-text-light">
+                        {desc}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+
                 <p className="text-sm  pb-[20px] text-secondary">
                   {event.date}
                 </p>
