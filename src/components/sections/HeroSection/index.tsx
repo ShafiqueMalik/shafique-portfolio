@@ -15,7 +15,7 @@ import { getFileUrl, urlFor } from '@/lib/sanity';
 import { IPortfolioData } from '@/shared/types/models';
 
 type HeroSectionProps = {
-  portfolioData?: IPortfolioData;
+  portfolioData: IPortfolioData;
 };
 async function HeroSection({ portfolioData }: HeroSectionProps) {
   const { profileImage, resume } = portfolioData || {};
@@ -61,7 +61,11 @@ async function HeroSection({ portfolioData }: HeroSectionProps) {
                 </Flex>
               </Flex>
 
-              <SocialIcons className="gap-5 md:gap-10 " iconClassName="dark:text-dark-text" />
+              <SocialIcons
+                className="gap-5 md:gap-10 "
+                iconClassName="dark:text-dark-text"
+                portfolioData={portfolioData}
+              />
             </Flex>
             <div className="  rounded-full flex-1 flex justify-center flex-col items-center">
               {profileImage && (

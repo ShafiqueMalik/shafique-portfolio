@@ -1,9 +1,8 @@
-import React from "react";
-import Logo from "../Logo";
-import Container from "../layout/Container";
-import Flex from "../layout/Flex";
-import SocialIcons from "../SocialIcons";
-import { navigationData } from "@/data/appData";
+import React from 'react';
+import Logo from '../Logo';
+import Container from '../layout/Container';
+import Flex from '../layout/Flex';
+import { navigationData } from '@/data/appData';
 
 function Footer() {
   return (
@@ -11,7 +10,7 @@ function Footer() {
       <div
         className="bg-primary text-white py-5 md:py-14 pt-10 md:pt-20 dark:bg-dark-light"
         style={{
-          clipPath: "polygon(0 26%, 100% 0, 100% 100%, 0% 100%)",
+          clipPath: 'polygon(0 26%, 100% 0, 100% 100%, 0% 100%)',
         }}
       >
         <Container sm>
@@ -22,7 +21,7 @@ function Footer() {
             </Flex>
             <Flex as="ul" className="items-center justify-center text-gray-300">
               {navigationData
-                .filter((item) => item.text !== "Home")
+                .filter((item) => item.text !== 'Home')
                 .map((item) => (
                   <li key={item.text} className="">
                     <a
@@ -35,12 +34,6 @@ function Footer() {
                   </li>
                 ))}
             </Flex>
-            <SocialIcons
-              className="justify-center gap-5 md:gap-10 mt-5 [&>li]:bg-gray-100
-             [&>li]:text-primary [&>li]:shadow-sm [&>li]:shadow-gray-300 "
-              iconClassName="text-primary"
-              rounded
-            />
           </div>
           {/* Footer for mobile */}
           <div className="md:hidden items-center flex justify-between">
@@ -48,19 +41,10 @@ function Footer() {
               <Flex className=" justify-center">
                 <Logo light className="text-3xl" />
               </Flex>
-              <SocialIcons
-                className="justify-center gap-3 mt-5 [&>li]:bg-gray-100
-             [&>li]:text-primary [&>li]:shadow-sm [&>li]:shadow-gray-300 "
-                iconClassName="text-primary"
-                rounded
-              />
             </div>
             <div>
               <h5 className="text-2xl text-center font-medium">Menu</h5>
-              <Flex
-                as="ul"
-                className="items-center flex-col justify-center text-gray-300"
-              >
+              <Flex as="ul" className="items-center flex-col justify-center text-gray-300">
                 {navigationData.map((item) => (
                   <li key={item.text} className="">
                     <a

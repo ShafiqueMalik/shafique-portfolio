@@ -132,12 +132,6 @@ function FloatingInfoSection({ portfolioData }: FloatingInfoSectionProps) {
           </Flex>
         </Flex>
       </div>
-
-      <SocialIcons
-        className="flex sm:hidden gap-5 justify-center mt-5"
-        rounded
-        iconClassName="text-white"
-      />
     </div>
   );
 }
