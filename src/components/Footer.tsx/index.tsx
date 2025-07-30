@@ -2,9 +2,14 @@ import React from 'react';
 import Logo from '../Logo';
 import Container from '../layout/Container';
 import Flex from '../layout/Flex';
+import SocialIcons from '../SocialIcons';
 import { navigationData } from '@/data/appData';
+import { IPortfolioData } from '@/shared/types/models';
 
-function Footer() {
+type FooterProps = {
+  portfolioData: IPortfolioData;
+};
+function Footer({ portfolioData }: FooterProps) {
   return (
     <div className=" pt-5 md:pt-10">
       <div
@@ -34,6 +39,13 @@ function Footer() {
                   </li>
                 ))}
             </Flex>
+            <SocialIcons
+              className="justify-center gap-5 md:gap-10 mt-5 [&>li]:bg-gray-100
+             [&>li]:text-primary [&>li]:shadow-sm [&>li]:shadow-gray-300 "
+              iconClassName="text-primary"
+              rounded
+              portfolioData={portfolioData}
+            />
           </div>
           {/* Footer for mobile */}
           <div className="md:hidden items-center flex justify-between">

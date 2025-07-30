@@ -1,32 +1,29 @@
-import Image from "next/image";
-import { IoMdClose } from "react-icons/io";
-import { APP_IMAGES } from "../../../public/assets/images";
-import SocialIcons from "../SocialIcons";
-import SideMenuClient from "./SideMenuClient";
-import Logo from "../Logo";
+import Image from 'next/image';
+import { IoMdClose } from 'react-icons/io';
+import { APP_IMAGES } from '../../../public/assets/images';
+import SocialIcons from '../SocialIcons';
+import SideMenuClient from './SideMenuClient';
+import Logo from '../Logo';
+import { IPortfolioData } from '@/shared/types/models';
 
 type SidebarNavbarProps = {
   open: boolean;
   onClose: () => void;
+  portfolioData: IPortfolioData;
 };
 
-const SidebarNavbar = ({ open, onClose }: SidebarNavbarProps) => {
+const SidebarNavbar = ({ open, onClose, portfolioData }: SidebarNavbarProps) => {
   return (
     <div>
       {/* Overlay */}
-      {open && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
-          onClick={onClose}
-        />
-      )}
+      {open && <div className="fixed inset-0 bg-[rgba(0,0,0,0.5)] z-40" onClick={onClose} />}
 
       {/* Sidebar */}
       <div
         className={`fixed top-0 left-0 h-[100vh] max-w-[250px]  w-[80vw] bg-white z-50 transform
           dark:bg-dark-light dark:text-dark-text
           ${
-            open ? "translate-x-0" : "-translate-x-full"
+            open ? 'translate-x-0' : '-translate-x-full'
           } transition-transform duration-300 ease-in-out`}
       >
         {/* Close Button */}
@@ -61,7 +58,12 @@ const SidebarNavbar = ({ open, onClose }: SidebarNavbarProps) => {
           </div>
           {/* Bottom Section: Social Icons */}
           <div className="flex justify-around text-gray-500 mb-3">
-            <SocialIcons direction="row" rounded iconClassName="text-white" />
+            <SocialIcons
+              direction="row"
+              rounded
+              iconClassName="text-white"
+              portfolioData={portfolioData}
+            />
           </div>
           <Logo className="justify-center text-3xl" />
         </div>
