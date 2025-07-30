@@ -2,79 +2,19 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Button from "@/components/forms/Button";
+import { useForm } from "react-hook-form";
 
 export default function ContactForm() {
-  const formRef = useRef<any>();
-  const [isFormSubmitting, setIsFormSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    user_email: "",
-    message: "",
-  });
+  const formRef = useRef<HTMLFormElement>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  console.log("e", errors);
 
-  const [errors, setErrors] = useState({
-    name: "",
-    user_email: "",
-    message: "",
-  });
-
-  const validateEmail = (user_email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-
-    // Simple validation checks
-    if (!value) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "This field is required.",
-      }));
-    } else if (name === "user_email" && !validateEmail(value)) {
-      setErrors((prev) => ({
-        ...prev,
-        user_email: "Please enter a valid email address.",
-      }));
-    } else {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsFormSubmitting(true);
-
-    // Check for empty fields before submission
-    if (!formData.name || !formData.user_email || !formData.message) {
-      setErrors({
-        name: formData.name ? "" : "This field is required.",
-        user_email: formData.user_email
-          ? validateEmail(formData.user_email)
-            ? ""
-            : "Please enter a valid user_email address."
-          : "This field is required.",
-        message: formData.message ? "" : "This field is required.",
-      });
-      setIsFormSubmitting(false);
-
-      return;
-    }
-
-    // Handle form submission here, e.g., send form data to an API
-
+  const onSubmit = (data) => {
+    console.log(data);
     emailjs
       .sendForm(
         "service_zutnn15",
@@ -83,48 +23,43 @@ export default function ContactForm() {
         "user_BmmgQOqakGY8uWbnMxx8l"
       )
       .then(
-        (result: any) => {
+        () => {
           setIsSuccess(true);
-          setFormData({
-            name: "",
-            user_email: "",
-            message: "",
-          });
           setIsFormSubmitting(false);
         },
-        (error: any) => {
+        () => {
           setIsError(true);
-          setFormData({
-            name: "",
-            user_email: "",
-            message: "",
-          });
           setIsFormSubmitting(false);
         }
       );
+  };
+  const [isFormSubmitting, setIsFormSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const validateEmail = (user_email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email);
   };
 
   return (
     <form
       ref={formRef}
-      onSubmit={handleSubmit}
+         onSubmit={handleSubmit(onSubmit)}
       className="max-w-lg mx-auto mt-10"
     >
       <input type="hidden" name="subject" value="Portfolio - Form Submission" />
       <div className="relative z-0 w-full mb-4 group">
         <input
           type="text"
-          name="name"
+          {...register("name", { required: "Name is required" })}
           id="name"
-          value={formData.name}
-          onChange={handleChange}
           className={`block w-full bg-transparent px-0 py-2 text-lg text-gray-900  border-0 border-b-2
              appearance-none focus:outline-none focus:ring-0 peer
              dark:text-dark-text
              dark:border-gray-400
              
              ${
-               errors.name
+               errors.name?.message
                  ? "border-red-500 focus:border-red-500"
                  : "border-primary focus:border-primary-light dark:focus:border-white"
              }`}
@@ -142,23 +77,21 @@ export default function ContactForm() {
         >
           Full Name
         </label>
-        {errors.name && (
-          <p className="mt-1 text-xs text-red-600">{errors.name}</p>
+        {typeof errors.name?.message === "string" && (
+          <p className="mt-1 text-xs text-red-600">{errors.name.message}</p>
         )}
       </div>
 
       <div className="relative z-0 w-full mb-4 group">
         <input
-          type="user_email"
-          name="user_email"
+          type="email"
+          {...register("user_email", { required: "Email is required" })}
           id="user_email"
-          value={formData.user_email}
-          onChange={handleChange}
           className={`block bg-transparent w-full px-0 py-2 text-lg text-gray-900 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer 
               dark:text-dark-text
              dark:border-gray-400
             ${
-              errors.user_email
+              errors.user_email?.message
                 ? "border-red-500 focus:border-red-500"
                 : "border-primary focus:border-primary-light"
             }`}
@@ -173,22 +106,22 @@ export default function ContactForm() {
         >
           Email
         </label>
-        {errors.user_email && (
-          <p className="mt-1 text-xs text-red-600">{errors.user_email}</p>
+        {typeof errors.user_email?.message === "string" && (
+          <p className="mt-1 text-xs text-red-600">
+            {errors.user_email.message}
+          </p>
         )}
       </div>
 
       <div className="relative z-0 w-full mb-8 group">
         <textarea
-          name="message"
+          {...register("message", { required: "Message is required" })}
           id="message"
-          value={formData.message}
-          onChange={handleChange}
           className={`block w-full  bg-transparent px-0 py-2 text-lg text-gray-900 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer 
               dark:text-dark-text
              dark:border-gray-400
             ${
-              errors.message
+              errors.message?.message
                 ? "border-red-500 focus:border-red-500"
                 : "border-primary focus:border-primary-light"
             }`}
@@ -203,8 +136,8 @@ export default function ContactForm() {
         >
           Message
         </label>
-        {errors.message && (
-          <p className="mt-1 text-xs text-red-600">{errors.message}</p>
+        {typeof errors.message?.message === "string" && (
+          <p className="mt-1 text-xs text-red-600">{errors.message.message}</p>
         )}
       </div>
 
@@ -222,7 +155,7 @@ export default function ContactForm() {
 
       {isSuccess && (
         <p className="mt-5 text-xl text-white bg-green-700/80 p-3 rounded-[10px]">
-          Thanks for reaching out! I'll be in touch with you soon.
+          Thanks for reaching out! I&#39;ll be in touch with you soon.
         </p>
       )}
       {isError && (

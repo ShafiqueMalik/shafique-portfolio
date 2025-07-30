@@ -11,11 +11,17 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import SocialIcons from "@/components/SocialIcons";
 import Link from "next/link";
 import Head from "next/head";
-import { sanity } from "@/lib/sanity";
+import { getFileUrl,  urlFor } from "@/lib/sanity";
+import { fetchHeroData } from "@/lib/sanityDataFetching/fetchHeroData";
+import { fetchPortfolioData } from "@/lib/sanityDataFetching/fetchPortfolioData";
 
 async function HeroSection() {
-  const hero = await sanity.fetch(`*[_type == "hero"][0]`);
-  console.log("hero", hero);
+  const fetchPortfolio = await fetchPortfolioData();
+  console.log("Portfolio Data:", fetchPortfolio);
+  const hero = await fetchHeroData();
+  const { profileImage, cvFile } = hero || {};
+  const fileUrl = getFileUrl(cvFile?.asset?._ref);
+
   return (
     <>
       <Head>
@@ -62,16 +68,18 @@ async function HeroSection() {
               />
             </Flex>
             <div className="  rounded-full flex-1 flex justify-center flex-col items-center">
-              <Image
-                src={APP_IMAGES.malik}
-                alt="Shafique Malik, Frontend Developer reactjs/nextjs"
-                width={400}
-                height={500}
-                loading="eager"
-                className="w-full min-w-[200px] rounded-full max-w-[80%] lg:max-w-[200px] bg-primary
+              {profileImage && (
+                <Image
+                  src={urlFor(profileImage).url()}
+                  alt="Shafique Malik, Frontend Developer reactjs/nextjs"
+                  width={400}
+                  height={500}
+                  loading="eager"
+                  className="w-full min-w-[200px] rounded-full max-w-[80%] lg:max-w-[200px] bg-primary
                 dark:bg-dark
                 "
-              />
+                />
+              )}
             </div>
             <Flex className="flex-col justify-center gap-5">
               <div className="lg:hidden">
@@ -105,7 +113,7 @@ async function HeroSection() {
                   </Button>
                 </a>
                 <Link
-                  href="/assets/ShafiqueMalik.docx"
+                  href={fileUrl || ""}
                   download="Shafique Malik Resume"
                   className="w-full"
                 >
@@ -138,7 +146,7 @@ async function HeroSection() {
           }}
         />
         {/* Floating Experience Section */}
-        <FloatingInfoSection />
+        <FloatingInfoSection info={hero} />
       </div>
     </>
   );

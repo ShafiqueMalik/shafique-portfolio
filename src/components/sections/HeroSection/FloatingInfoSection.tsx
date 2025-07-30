@@ -7,8 +7,11 @@ import Text from "../../texts/Text";
 import SocialIcons from "@/components/SocialIcons";
 import Image from "next/image";
 import { APP_IMAGES } from "../../../../public/assets/images";
+import { urlFor } from "@/lib/sanity";
 
-function FloatingInfoSection() {
+function FloatingInfoSection({ info }: any) {
+  const { profileImage } = info || {};
+
   return (
     <div
       className="absolute z-10 -translate-x-1/2 left-[50%] bottom-0 translate-y-1/2 shadow-2xl 
@@ -16,17 +19,19 @@ function FloatingInfoSection() {
  min-[850px]:px-10 bg-white/80 sm:bg-white dark:text-dark-text  
   gap-4 sm:gap-8 dark:bg-dark/80 dark:shadow dark:shadow-gray-700"
     >
-      <Image
-        src={APP_IMAGES.malik}
-        alt="Shafique Malik, Frontend Developer reactjs/nextjs"
-        width={80}
-        height={80}
-        loading="eager"
-        className="size-[80px] block sm:hidden absolute top-0 left-1/2 -translate-x-1/2 
+      {profileImage && (
+        <Image
+          src={urlFor(profileImage).url()}
+          alt="Shafique Malik, Frontend Developer reactjs/nextjs"
+          width={80}
+          height={80}
+          loading="eager"
+          className="size-[80px] block sm:hidden absolute top-0 left-1/2 -translate-x-1/2 
         -translate-y-1/2 rounded-full  bg-primary
         dark:bg-dark
         "
-      />
+        />
+      )}
       <div className="block sm:hidden">
         <Text
           as="h1"
@@ -35,13 +40,13 @@ function FloatingInfoSection() {
           dark:text-dark-text
            "
         >
-          Shafique Malik
+          {info?.name || "Shafique Malik"}
         </Text>
         <Text
           as="h1"
           className="text-sm text-secondary dark:text-dark-text-light text-center  italic leading-none"
         >
-          Front End & Javascript Dev
+          {info?.profileTitle || "Frontend Developer"}
         </Text>
       </div>
       <div className="flex justify-center mt-6 sm:mt-0 divide-x-2">
@@ -51,16 +56,19 @@ function FloatingInfoSection() {
           dark:bg-primary  dark:text-dark-text 
           "
             role="img"
-           aria-label="Experience"
+            aria-label="Experience"
           >
-            <RiMedalLine className="  text-xl  min-[850px]:text-3xl" aria-hidden="true" />
+            <RiMedalLine
+              className="  text-xl  min-[850px]:text-3xl"
+              aria-hidden="true"
+            />
           </div>
           <Flex className="flex-col items-center">
             <Text
               as="p"
               className="font-medium text-sm mob:text-base sm:text-xl  min-[850px]:text-2xl "
             >
-              7+ years Job
+              {info?.experience}+ years Job
             </Text>
             <Text
               as="h2"
@@ -77,16 +85,19 @@ function FloatingInfoSection() {
           dark:bg-primary  dark:text-dark-text
           "
             role="img"
-           aria-label="Projects"
+            aria-label="Projects"
           >
-            <AiOutlineFileDone className=" text-xl  min-[850px]:text-3xl  " aria-hidden="true" />
+            <AiOutlineFileDone
+              className=" text-xl  min-[850px]:text-3xl  "
+              aria-hidden="true"
+            />
           </div>
           <Flex className="flex-col items-center">
             <Text
               as="p"
               className="font-medium text-sm mob:text-base sm:text-xl  min-[850px]:text-2xl "
             >
-              100+ Projects
+              {info?.completedProjects}+ Projects
             </Text>
             <Text
               as="h2"
@@ -102,10 +113,13 @@ function FloatingInfoSection() {
             className="bg-primary text-white  p-2 rounded-full  hidden min-[660px]:block
           dark:bg-primary  dark:text-dark-text
           "
-           role="img"
-           aria-label="Support Agent"
+            role="img"
+            aria-label="Support Agent"
           >
-            <MdSupportAgent aria-hidden="true" className="  text-xl  min-[850px]:text-3xl " />
+            <MdSupportAgent
+              aria-hidden="true"
+              className="  text-xl  min-[850px]:text-3xl "
+            />
           </div>
           <Flex className="flex-col items-center">
             <Text

@@ -21,7 +21,7 @@ export default function PortfolioCard({ project }: PortfolioCardProps) {
         height={250}
       />
       <div
-        className="absolute inset-0 bg-black bg-opacity-70 group-hover:bg-opacity-80 flex flex-col justify-end items-center p-5 
+        className="absolute inset-0  bg-[rgba(0,0,0,0.7)] group-hover:bg-[rgba(0,0,0,0.8)] flex flex-col justify-end items-center p-5 
      opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       >
         <h3 className="text-white text-xl font-semibold mb-2 capitalize">

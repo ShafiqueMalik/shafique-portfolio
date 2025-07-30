@@ -4,8 +4,12 @@ import Flex from "../../layout/Flex";
 import Image from "next/image";
 import SocialIcons from "@/components/SocialIcons";
 import { APP_IMAGES } from "../../../../public/assets/images";
+import { fetchHeroData } from "@/lib/sanityDataFetching/fetchHeroData";
+import { urlFor } from "@/lib/sanity";
 
-function AboutSection() {
+async function AboutSection() {
+  const hero = await fetchHeroData();
+  const { profileImage, cvFile } = hero || {};
   return (
     <div
       id="about-section"
@@ -16,15 +20,17 @@ function AboutSection() {
           className=" min-h-[calc(80vh)]  hidden mob-lg:flex  justify-end items-center bg-primary
          dark:bg-gray-800  pt-20 "
         >
-          <Image
-            src={APP_IMAGES.malik}
-            alt="Shafique Malik, Frontend Developer reactjs/nextjs"
-            width={400}
-            height={500}
-            loading="eager"
-            className="  bg-secondary/70 border-[5px] border-gray-100 
+          {profileImage && (
+            <Image
+              src={urlFor(profileImage).url()}
+              alt="Shafique Malik, Frontend Developer reactjs/nextjs"
+              width={400}
+              height={500}
+              loading="eager"
+              className="  bg-secondary/70 border-[5px] border-gray-100 
             min-w-[200px] w-[40%] h-[70%] sm:translate-x-[60px] z-10"
-          />
+            />
+          )}
         </div>
         <Flex
           className="relative  h-full flex-col gap-5 sm:gap-10 pl-8 sm:pl-[80px] md:pl-[100px] 
@@ -52,19 +58,20 @@ function AboutSection() {
                 variant="secondary"
                 className="text-[35px] leading-none dark:text-dark-text"
               >
-                Shafique Malik
+                {hero?.name || "Shafique Malik"}
               </Text>
             </div>
             <Text className="mt-5 text-sm lg:text-base dark:text-dark-text-light">
-              I&#39;m a professional Front End Developer based in Pakistan Lahore. I
-              describe myself as a developer who loves coding, open source, and
-              the web platform. Currently I&#39;m working at a company called
-              Systems Ltd, as a Front End (React.js & Next.js) Developer.
+              I&#39;m a professional Front End Developer based in Pakistan
+              Lahore. I describe myself as a developer who loves coding, open
+              source, and the web platform. Currently I&#39;m working at a
+              company called Systems Ltd, as a Front End (React.js & Next.js)
+              Developer.
             </Text>
             <div className="mt-5 italic space-y-2 md:mt-10">
               <Flex className="items-center gap-3 sm:gap-5">
                 <span className="font-bold">Name:</span>
-                <span>Shafique Malik</span>
+                <span>{hero?.name}</span>
               </Flex>
               <Flex className="items-center gap-3 sm:gap-5">
                 <span className="font-bold">Phone:</span>

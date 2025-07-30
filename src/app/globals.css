@@ -1,3 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #063461;
+  --color-primary-dark: #042a4d;
+  --color-primary-light: #0b6ab0;
+
+  --color-secondary: #e64833;
+  --color-secondary-dark: #e64833;
+  --color-secondary-light: #cdcdcd;
+
+  --color-background-default: #7bb6f114;
+  --color-background-light: #7bb6f114;
+
+  --color-dark: #121212;
+  --color-dark-light: #1b1f24;
+  --color-dark-text: #e4e4e4;
+  --color-dark-text-light: #bec0c3;  
+
+  /* breakpoints */
+  --breakpoint-mob: 400px;
+  --breakpoint-mob-lg:520px;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
