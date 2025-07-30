@@ -1,16 +1,19 @@
-import { RiMedalLine } from "react-icons/ri";
-import { AiOutlineFileDone } from "react-icons/ai";
-import { MdSupportAgent } from "react-icons/md";
+import { RiMedalLine } from 'react-icons/ri';
+import { AiOutlineFileDone } from 'react-icons/ai';
+import { MdSupportAgent } from 'react-icons/md';
 
-import Flex from "../../layout/Flex";
-import Text from "../../texts/Text";
-import SocialIcons from "@/components/SocialIcons";
-import Image from "next/image";
-import { APP_IMAGES } from "../../../../public/assets/images";
-import { urlFor } from "@/lib/sanity";
+import Flex from '../../layout/Flex';
+import Text from '../../texts/Text';
+import SocialIcons from '@/components/SocialIcons';
+import Image from 'next/image';
+import { urlFor } from '@/lib/sanity';
+import { IPortfolioData } from '@/shared/types/models';
 
-function FloatingInfoSection({ info }: any) {
-  const { profileImage } = info || {};
+type FloatingInfoSectionProps = {
+  portfolioData: IPortfolioData | undefined;
+};
+function FloatingInfoSection({ portfolioData }: FloatingInfoSectionProps) {
+  const { profileImage } = portfolioData || {};
 
   return (
     <div
@@ -40,13 +43,13 @@ function FloatingInfoSection({ info }: any) {
           dark:text-dark-text
            "
         >
-          {info?.name || "Shafique Malik"}
+          {portfolioData?.firstName} {portfolioData?.lastName}
         </Text>
         <Text
           as="h1"
           className="text-sm text-secondary dark:text-dark-text-light text-center  italic leading-none"
         >
-          {info?.profileTitle || "Frontend Developer"}
+          {portfolioData?.role || 'Frontend Developer'}
         </Text>
       </div>
       <div className="flex justify-center mt-6 sm:mt-0 divide-x-2">
@@ -58,17 +61,14 @@ function FloatingInfoSection({ info }: any) {
             role="img"
             aria-label="Experience"
           >
-            <RiMedalLine
-              className="  text-xl  min-[850px]:text-3xl"
-              aria-hidden="true"
-            />
+            <RiMedalLine className="  text-xl  min-[850px]:text-3xl" aria-hidden="true" />
           </div>
           <Flex className="flex-col items-center">
             <Text
               as="p"
               className="font-medium text-sm mob:text-base sm:text-xl  min-[850px]:text-2xl "
             >
-              {info?.experience}+ years Job
+              {portfolioData?.experience}+ years Job
             </Text>
             <Text
               as="h2"
@@ -87,17 +87,14 @@ function FloatingInfoSection({ info }: any) {
             role="img"
             aria-label="Projects"
           >
-            <AiOutlineFileDone
-              className=" text-xl  min-[850px]:text-3xl  "
-              aria-hidden="true"
-            />
+            <AiOutlineFileDone className=" text-xl  min-[850px]:text-3xl  " aria-hidden="true" />
           </div>
           <Flex className="flex-col items-center">
             <Text
               as="p"
               className="font-medium text-sm mob:text-base sm:text-xl  min-[850px]:text-2xl "
             >
-              {info?.completedProjects}+ Projects
+              {portfolioData?.completedProjects}+ Projects
             </Text>
             <Text
               as="h2"
@@ -116,10 +113,7 @@ function FloatingInfoSection({ info }: any) {
             role="img"
             aria-label="Support Agent"
           >
-            <MdSupportAgent
-              aria-hidden="true"
-              className="  text-xl  min-[850px]:text-3xl "
-            />
+            <MdSupportAgent aria-hidden="true" className="  text-xl  min-[850px]:text-3xl " />
           </div>
           <Flex className="flex-col items-center">
             <Text

@@ -1,43 +1,44 @@
 export interface ISocialLink {
-  platform: 'linkedin' | 'email' | 'location' | 'phone' | string
-  url: string
-  icon?: any
+  platform: 'linkedin' | 'email' | 'location' | 'phone' | string;
+  url: string;
+  icon?: any;
 }
 
-export interface IMyInformation {
-  _id: string
-  _createdAt: string
-  firstName: string
-  lastName: string
-  fullName: string
-  role: string
-  experience: number
-  socialLinks: ISocialLink[]
-  resume: {
-    asset: {
-      _ref: string
-      url: string
-    }
-  }
+export interface IPortfolioData {
+  _createdAt: string;
+  _id: string;
+  address: string;
+  completedProjects: number;
+  email: string;
+  experience: number;
+  firstName: string;
+  fullName: string;
+  lastName: string;
+  phoneNumber: string;
   profileImage: {
     asset: {
-      _ref: string
-      url: string
-    }
-    hotspot?: {
-      x: number
-      y: number
-    }
-  }
-  profileImage2?: {
+      _ref: string | null;
+      url: string;
+    };
+    hotspot: unknown | null;
+  };
+  profileImage2: {
     asset: {
-      _ref: string
-      url: string
-    }
-  }
-  completedProjects: number
-  roleDescription: string
-  phoneNumber: string
-  email: string
-  address: string
+      _ref: string | null;
+      url: string;
+    };
+  };
+  resume: {
+    asset: {
+      _ref: string | null;
+      url: string;
+    };
+  };
+  role: string;
+  roleDescription: string;
+  socialLinks: {
+    _key: string;
+    platform: string;
+    url: string;
+  }[];
 }

@@ -1,14 +1,16 @@
-import { socialData } from "@/data/appData";
-import React from "react";
-import { twMerge } from "tailwind-merge";
-import Flex from "./layout/Flex";
-import { fetchSocialsData } from "@/lib/sanityDataFetching/fetchHeroData";
+import { socialData, socialIcons } from '@/data/appData';
+import React from 'react';
+import { twMerge } from 'tailwind-merge';
+import Flex from './layout/Flex';
+import { fetchSocialsData } from '@/lib/sanityDataFetching/fetchHeroData';
+import { IPortfolioData } from '@/shared/types/models';
 
 type SocialIconsProps = {
   className?: string;
   iconClassName?: string;
-  direction?: "row" | "column";
+  direction?: 'row' | 'column';
   rounded?: boolean;
+  portfolioData: IPortfolioData;
   // socials?: Record<"email" | "linkedin" | "location" | "mobile", string>;
 };
 function SocialIcons({
@@ -16,46 +18,38 @@ function SocialIcons({
   iconClassName,
   direction,
   rounded = false,
+  portfolioData,
 }: SocialIconsProps) {
   const socials: any = {};
-  let classes = "";
+  let classes = '';
   if (rounded) {
-    classes = "bg-primary p-2 rounded-full text-white";
+    classes = 'bg-primary p-2 rounded-full text-white';
   }
-  const getSocialsUrl = (title: string) => {
-    if (title?.toLowerCase() === "address") {
-      return socials?.location;
-    } else if (
-      title?.toLowerCase() === "let's talk" ||
-      title?.toLowerCase() === "mobile"
-    ) {
-      return socials?.mobile;
-    } else if (title?.toLowerCase() === "email") {
-      return socials?.email;
-    } else if (title?.toLowerCase() === "linkedin") {
-      return socials?.linkedin;
+  const getSocialIcon = (plateform: string) => {
+    if (plateform?.toLowerCase() === 'location') {
+      return <socialIcons.location />;
+    } else if (plateform?.toLowerCase() === 'linkedin') {
+      return <socialIcons.linkedin />;
+    } else if (plateform?.toLowerCase() === 'email') {
+      return <socialIcons.email />;
+    } else if (plateform?.toLowerCase() === 'phone') {
+      return <socialIcons.phone />;
     }
-    return "";
+    return '';
   };
   return (
-    <Flex
-      as="ul"
-      className={twMerge(
-        `gap-3 ${direction === "column" && "flex-col"}`,
-        className
-      )}
-    >
-      {socialData.map((item) => (
-        <li key={item.title} className={classes}>
+    <Flex as="ul" className={twMerge(`gap-3 ${direction === 'column' && 'flex-col'}`, className)}>
+      {portfolioData?.socialLinks.map((item) => (
+        <li key={item.platform} className={classes}>
           <a
-            href={getSocialsUrl(item.title) || ""}
+            href={item.url}
             target="_blank"
             className="text-xl relative"
             rel="noreferrer"
-            aria-label={item.title}
-            title={item.title}
+            aria-label={item.platform}
+            title={item.platform}
           >
-            <item.icon className={twMerge("text-secondary", iconClassName)} />
+            <>{getSocialIcon(item.platform)}</>
           </a>
         </li>
       ))}

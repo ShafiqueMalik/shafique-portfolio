@@ -1,20 +1,17 @@
-import React from "react";
-import Text from "../../texts/Text";
-import Flex from "../../layout/Flex";
-import Image from "next/image";
-import SocialIcons from "@/components/SocialIcons";
-import { APP_IMAGES } from "../../../../public/assets/images";
-import { fetchHeroData } from "@/lib/sanityDataFetching/fetchHeroData";
-import { urlFor } from "@/lib/sanity";
+import React from 'react';
+import Text from '../../texts/Text';
+import Flex from '../../layout/Flex';
+import Image from 'next/image';
+import { urlFor } from '@/lib/sanity';
+import { IPortfolioData } from '@/shared/types/models';
 
-async function AboutSection() {
-  const hero = await fetchHeroData();
-  const { profileImage, cvFile } = hero || {};
+type AboutSectionProps = {
+  portfolioData: IPortfolioData;
+};
+async function AboutSection({ portfolioData }: AboutSectionProps) {
+  const { profileImage } = portfolioData || {};
   return (
-    <div
-      id="about-section"
-      className="scroll-mt-[64px] flex items-center relative"
-    >
+    <div id="about-section" className="scroll-mt-[64px] flex items-center relative">
       <div className="   grid grid-cols-1 mob-lg:grid-cols-[40%_1fr]">
         <div
           className=" min-h-[calc(80vh)]  hidden mob-lg:flex  justify-end items-center bg-primary
@@ -35,7 +32,7 @@ async function AboutSection() {
         <Flex
           className="relative  h-full flex-col gap-5 sm:gap-10 pl-8 sm:pl-[80px] md:pl-[100px] 
           pt-40
-           sm:pt-20
+           sm:pt-[100px]
         pb-16 sm:pb-[130px] 
         dark:bg-dark-light
         dark:border-t dark:border-gray-600
@@ -58,20 +55,21 @@ async function AboutSection() {
                 variant="secondary"
                 className="text-[35px] leading-none dark:text-dark-text"
               >
-                {hero?.name || "Shafique Malik"}
+                {portfolioData?.firstName} {portfolioData?.lastName}
               </Text>
             </div>
             <Text className="mt-5 text-sm lg:text-base dark:text-dark-text-light">
-              I&#39;m a professional Front End Developer based in Pakistan
-              Lahore. I describe myself as a developer who loves coding, open
-              source, and the web platform. Currently I&#39;m working at a
-              company called Systems Ltd, as a Front End (React.js & Next.js)
+              I&#39;m a professional Front End Developer based in Pakistan Lahore. I describe myself
+              as a developer who loves coding, open source, and the web platform. Currently I&#39;m
+              working at a company called Systems Ltd, as a Front End (React.js & Next.js)
               Developer.
             </Text>
             <div className="mt-5 italic space-y-2 md:mt-10">
               <Flex className="items-center gap-3 sm:gap-5">
                 <span className="font-bold">Name:</span>
-                <span>{hero?.name}</span>
+                <span>
+                  {portfolioData?.firstName} {portfolioData?.lastName}
+                </span>
               </Flex>
               <Flex className="items-center gap-3 sm:gap-5">
                 <span className="font-bold">Phone:</span>
@@ -82,11 +80,6 @@ async function AboutSection() {
                 <span>imshafiqmalik@gmail.com</span>
               </Flex>
             </div>
-            <SocialIcons
-              className="gap-5 mt-10 [&>*]:bg-secondar z-10"
-              iconClassName="text-white "
-              rounded
-            />
           </Flex>
           <svg
             xmlns="http://www.w3.org/2000/svg"

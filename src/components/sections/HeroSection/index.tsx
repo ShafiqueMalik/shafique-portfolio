@@ -1,26 +1,25 @@
-import React from "react";
-import Container from "../../layout/Container";
-import Text from "../../texts/Text";
-import Flex from "../../layout/Flex";
-import Image from "next/image";
-import { APP_IMAGES } from "../../../../public/assets/images";
-import Button from "../../forms/Button";
-import FloatingInfoSection from "./FloatingInfoSection";
-import { MdOutlineFileDownload } from "react-icons/md";
+import React from 'react';
+import Container from '../../layout/Container';
+import Text from '../../texts/Text';
+import Flex from '../../layout/Flex';
+import Image from 'next/image';
+import { APP_IMAGES } from '../../../../public/assets/images';
+import Button from '../../forms/Button';
+import FloatingInfoSection from './FloatingInfoSection';
+import { MdOutlineFileDownload } from 'react-icons/md';
 
-import SocialIcons from "@/components/SocialIcons";
-import Link from "next/link";
-import Head from "next/head";
-import { getFileUrl,  urlFor } from "@/lib/sanity";
-import { fetchHeroData } from "@/lib/sanityDataFetching/fetchHeroData";
-import { fetchPortfolioData } from "@/lib/sanityDataFetching/fetchPortfolioData";
+import SocialIcons from '@/components/SocialIcons';
+import Link from 'next/link';
+import Head from 'next/head';
+import { getFileUrl, urlFor } from '@/lib/sanity';
+import { IPortfolioData } from '@/shared/types/models';
 
-async function HeroSection() {
-  const fetchPortfolio = await fetchPortfolioData();
-  console.log("Portfolio Data:", fetchPortfolio);
-  const hero = await fetchHeroData();
-  const { profileImage, cvFile } = hero || {};
-  const fileUrl = getFileUrl(cvFile?.asset?._ref);
+type HeroSectionProps = {
+  portfolioData?: IPortfolioData;
+};
+async function HeroSection({ portfolioData }: HeroSectionProps) {
+  const { profileImage, resume } = portfolioData || {};
+  const fileUrl = getFileUrl(resume?.asset?._ref as string);
 
   return (
     <>
@@ -51,21 +50,18 @@ async function HeroSection() {
                   className="text-[35px]  rounded-md items-center
                     text-secondary dark:text-dark-text w-max leading-none whitespace-norap"
                 >
-                  {hero?.name}
+                  {portfolioData?.firstName} {portfolioData?.lastName}
                 </Text>
               </div>
               <Flex className="uppercase gap-2 items-center text-primary dark:text-dark-text">
-                <Text className="text-[40px]">{hero?.experience}+</Text>
+                <Text className="text-[40px]">{portfolioData?.experience}+</Text>
                 <Flex className="flex-col">
                   <Text>Years</Text>
                   <Text>Experience</Text>
                 </Flex>
               </Flex>
 
-              <SocialIcons
-                className="gap-5 md:gap-10 "
-                iconClassName="dark:text-dark-text"
-              />
+              <SocialIcons className="gap-5 md:gap-10 " iconClassName="dark:text-dark-text" />
             </Flex>
             <div className="  rounded-full flex-1 flex justify-center flex-col items-center">
               {profileImage && (
@@ -91,17 +87,14 @@ async function HeroSection() {
                   className="text-[35px]  rounded-md items-center 
                    text-secondary w-max dark:text-dark-text leading-none whitespace-norap"
                 >
-                  {hero?.name}
+                  {portfolioData?.firstName} {portfolioData?.lastName}
                 </Text>
               </div>
               <div className="max-w-[264px] whitespace-nowrap">
                 <Text as="h1" className="text-[25px] leading-none">
-                  {hero?.profileTitle}
+                  {portfolioData?.role}
                 </Text>
-                <Text
-                  as="p"
-                  className="font-light text-gray-400 mb-5 text-right"
-                >
+                <Text as="p" className="font-light text-gray-400 mb-5 text-right">
                   Developer
                 </Text>
               </div>
@@ -112,11 +105,7 @@ async function HeroSection() {
                     Contact Me
                   </Button>
                 </a>
-                <Link
-                  href={fileUrl || ""}
-                  download="Shafique Malik Resume"
-                  className="w-full"
-                >
+                <Link href={fileUrl || ''} download="Shafique Malik Resume" className="w-full">
                   <Button
                     primary
                     outlined
@@ -146,7 +135,7 @@ async function HeroSection() {
           }}
         />
         {/* Floating Experience Section */}
-        <FloatingInfoSection info={hero} />
+        <FloatingInfoSection portfolioData={portfolioData} />
       </div>
     </>
   );
