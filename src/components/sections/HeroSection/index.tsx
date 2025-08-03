@@ -4,7 +4,6 @@ import Text from '../../texts/Text';
 import Flex from '../../layout/Flex';
 import Image from 'next/image';
 import { APP_IMAGES } from '../../../../public/assets/images';
-import Button from '../../forms/Button';
 import FloatingInfoSection from './FloatingInfoSection';
 import { MdOutlineFileDownload } from 'react-icons/md';
 
@@ -13,6 +12,8 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { getFileUrl, urlFor } from '@/lib/sanity';
 import { IPortfolioData } from '@/shared/types/models';
+import { PrimaryButton } from '@/shared/components/forms/PrimaryButton';
+import SecondaryButton from '@/shared/components/forms/SecondaryButton';
 
 type HeroSectionProps = {
   portfolioData: IPortfolioData;
@@ -105,19 +106,14 @@ async function HeroSection({ portfolioData }: HeroSectionProps) {
 
               <Flex className="gap-3 flex-col text-center  mt-5 ">
                 <a href="#contact-section" className="w-full">
-                  <Button primary rounded className="w-full ">
+                  <SecondaryButton pill className="w-full">
                     Contact Me
-                  </Button>
+                  </SecondaryButton>
                 </a>
                 <Link href={fileUrl || ''} download="Shafique Malik Resume" className="w-full">
-                  <Button
-                    primary
-                    outlined
-                    rounded
-                    className="flex gap-2 w-full items-center justify-center"
-                  >
+                  <SecondaryButton pill className="w-full" outlined>
                     <MdOutlineFileDownload size={20} /> Download CV
-                  </Button>
+                  </SecondaryButton>
                 </Link>
               </Flex>
             </Flex>

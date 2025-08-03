@@ -1,8 +1,8 @@
-"use client";
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import Button from "@/components/forms/Button";
-import { useForm } from "react-hook-form";
+'use client';
+import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import { useForm } from 'react-hook-form';
+import { PrimaryButton } from '@/shared/components/forms/PrimaryButton';
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -11,16 +11,16 @@ export default function ContactForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log("e", errors);
+  console.log('e', errors);
 
   const onSubmit = (data) => {
     console.log(data);
     emailjs
       .sendForm(
-        "service_zutnn15",
-        "template_d6cumb8",
+        'service_zutnn15',
+        'template_d6cumb8',
         formRef.current as HTMLFormElement,
-        "user_BmmgQOqakGY8uWbnMxx8l"
+        'user_BmmgQOqakGY8uWbnMxx8l'
       )
       .then(
         () => {
@@ -37,21 +37,13 @@ export default function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const validateEmail = (user_email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user_email);
-  };
-
   return (
-    <form
-      ref={formRef}
-         onSubmit={handleSubmit(onSubmit)}
-      className="max-w-lg mx-auto mt-10"
-    >
+    <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto mt-10">
       <input type="hidden" name="subject" value="Portfolio - Form Submission" />
       <div className="relative z-0 w-full mb-4 group">
         <input
           type="text"
-          {...register("name", { required: "Name is required" })}
+          {...register('name', { required: 'Name is required' })}
           id="name"
           className={`block w-full bg-transparent px-0 py-2 text-lg text-gray-900  border-0 border-b-2
              appearance-none focus:outline-none focus:ring-0 peer
@@ -60,8 +52,8 @@ export default function ContactForm() {
              
              ${
                errors.name?.message
-                 ? "border-red-500 focus:border-red-500"
-                 : "border-primary focus:border-primary-light dark:focus:border-white"
+                 ? 'border-red-500 focus:border-red-500'
+                 : 'border-primary focus:border-primary-light dark:focus:border-white'
              }`}
           placeholder=" "
         />
@@ -77,7 +69,7 @@ export default function ContactForm() {
         >
           Full Name
         </label>
-        {typeof errors.name?.message === "string" && (
+        {typeof errors.name?.message === 'string' && (
           <p className="mt-1 text-xs text-red-600">{errors.name.message}</p>
         )}
       </div>
@@ -85,15 +77,21 @@ export default function ContactForm() {
       <div className="relative z-0 w-full mb-4 group">
         <input
           type="email"
-          {...register("user_email", { required: "Email is required" })}
+          {...register('user_email', {
+            required: 'Email is required',
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'Invalid email address',
+            },
+          })}
           id="user_email"
           className={`block bg-transparent w-full px-0 py-2 text-lg text-gray-900 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer 
               dark:text-dark-text
              dark:border-gray-400
             ${
               errors.user_email?.message
-                ? "border-red-500 focus:border-red-500"
-                : "border-primary focus:border-primary-light"
+                ? 'border-red-500 focus:border-red-500'
+                : 'border-primary focus:border-primary-light'
             }`}
           placeholder=" "
         />
@@ -106,24 +104,22 @@ export default function ContactForm() {
         >
           Email
         </label>
-        {typeof errors.user_email?.message === "string" && (
-          <p className="mt-1 text-xs text-red-600">
-            {errors.user_email.message}
-          </p>
+        {typeof errors.user_email?.message === 'string' && (
+          <p className="mt-1 text-xs text-red-600">{errors.user_email.message}</p>
         )}
       </div>
 
       <div className="relative z-0 w-full mb-8 group">
         <textarea
-          {...register("message", { required: "Message is required" })}
+          {...register('message', { required: 'Message is required' })}
           id="message"
           className={`block w-full  bg-transparent px-0 py-2 text-lg text-gray-900 border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 peer 
               dark:text-dark-text
              dark:border-gray-400
             ${
               errors.message?.message
-                ? "border-red-500 focus:border-red-500"
-                : "border-primary focus:border-primary-light"
+                ? 'border-red-500 focus:border-red-500'
+                : 'border-primary focus:border-primary-light'
             }`}
           placeholder=" "
         />
@@ -136,22 +132,14 @@ export default function ContactForm() {
         >
           Message
         </label>
-        {typeof errors.message?.message === "string" && (
+        {typeof errors.message?.message === 'string' && (
           <p className="mt-1 text-xs text-red-600">{errors.message.message}</p>
         )}
       </div>
 
-      <Button
-        type="submit"
-        primary
-        disabled={isFormSubmitting}
-        className="px-6 py-2 text-white bg-primary rounded-lg hover:bg-primary-dark focus:outline-none 
-       w-full focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50
-       disabled:opacity-50 disabled:cursor-not-allowed
-       "
-      >
+      <PrimaryButton className="w-full mt-2" disabled={isFormSubmitting}>
         Send Message
-      </Button>
+      </PrimaryButton>
 
       {isSuccess && (
         <p className="mt-5 text-xl text-white bg-green-700/80 p-3 rounded-[10px]">
@@ -160,8 +148,7 @@ export default function ContactForm() {
       )}
       {isError && (
         <p className="mt-5 text-xl text-white bg-red-700/80 p-3 rounded-[10px]">
-          Something went wrong! Please try resending your message or contact me
-          directly.
+          Something went wrong! Please try resending your message or contact me directly.
         </p>
       )}
     </form>

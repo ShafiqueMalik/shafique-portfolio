@@ -4,7 +4,6 @@ import { MdSupportAgent } from 'react-icons/md';
 
 import Flex from '../../layout/Flex';
 import Text from '../../texts/Text';
-import SocialIcons from '@/components/SocialIcons';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity';
 import { IPortfolioData } from '@/shared/types/models';

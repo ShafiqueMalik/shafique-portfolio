@@ -6,8 +6,10 @@ import MySkillsSection from '@/components/sections/MySkillsSection';
 import PortfolioSection from '@/components/sections/PortfolioSection';
 import ServicesSection from '@/components/sections/ServicesSection';
 import SocialIcons from '@/components/SocialIcons';
+import { Button } from '@/components/ui/button';
 import { fetchFromSanity } from '@/lib/fetchFromSanity';
 import { getPorfolioQuery } from '@/lib/sanityQueries';
+import { PrimaryButton } from '@/shared/components/forms/PrimaryButton';
 import { IPortfolioData } from '@/shared/types/models';
 
 export default async function Home() {
@@ -15,6 +17,11 @@ export default async function Home() {
 
   return (
     <div className="">
+      {/* <div className="mt-20 ml-20">
+        <PrimaryButton outlined>CCC</PrimaryButton>
+        <Button variant="destructive">KKKK</Button>
+        <PrimaryButton onClick={() => alert('')}>CCC</PrimaryButton>
+      </div> */}
       <HeroSection portfolioData={portfolioData} />
       <AboutSection portfolioData={portfolioData} />
       <ServicesSection />

@@ -1,5 +1,6 @@
 'use client';
 
+import { PrimaryButton } from '@/shared/components/forms/PrimaryButton';
 import { useEffect } from 'react';
 
 interface ErrorProps {
@@ -19,12 +20,8 @@ export default function Error({ error, reset }: ErrorProps) {
         We&#39;re sorry! An unexpected error occurred. Please try again or contact support if the
         issue persists.
       </p>
-      <button
-        onClick={reset}
-        className="px-6 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 transition"
-      >
-        Try Again
-      </button>
+
+      <PrimaryButton onClick={reset}>Try Again</PrimaryButton>
     </div>
   );
 }
