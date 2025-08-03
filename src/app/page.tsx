@@ -11,18 +11,8 @@ import { getPorfolioQuery } from '@/lib/sanityQueries';
 import { IPortfolioData } from '@/shared/types/models';
 
 export default async function Home() {
-  let portfolioData: IPortfolioData | undefined = undefined;
+  const portfolioData = await fetchFromSanity<IPortfolioData>(getPorfolioQuery);
 
-  try {
-    portfolioData = await fetchFromSanity<IPortfolioData>(getPorfolioQuery);
-  } catch (error) {
-    return <div className="text-red-500">❌ Error loading portfolio data.</div>;
-  }
-  console.log('Portfolio Data:', portfolioData);
-
-  if (!portfolioData) {
-    return <div>No data found.</div>;
-  }
   return (
     <div className="">
       <HeroSection portfolioData={portfolioData} />
