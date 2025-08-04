@@ -37,7 +37,7 @@ const InputField = React.forwardRef<HTMLElement, InputFieldProps>(
     const isRequired = Boolean(rules.required);
 
     const baseStyles = cn(
-      'border shadow-none border-primary dark:border-gray-600 rounded-md px-3  focus-visible:ring-1 focus-visible:ring-primary dark:focus-visible:ring-white/40 focus-visible:ring-offset-0',
+      'border text-base shadow-none border-primary dark:border-gray-600 rounded-md px-3  focus-visible:ring-1 focus-visible:ring-primary dark:focus-visible:ring-white/40 focus-visible:ring-offset-0',
       error ? 'border-red-500 focus-visible:ring-red-500' : '',
       className
     );
@@ -45,7 +45,10 @@ const InputField = React.forwardRef<HTMLElement, InputFieldProps>(
     return (
       <div className="grid w-full gap-1">
         {label && (
-          <Label htmlFor={(props as any).id || name} className={error ? 'text-red-500' : ''}>
+          <Label
+            htmlFor={(props as any).id || name}
+            className={`text-base ${error ? 'text-red-500' : ''}`}
+          >
             {label} {isRequired && <span className="text-red-500">*</span>}
           </Label>
         )}
