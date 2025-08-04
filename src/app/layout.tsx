@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ToastContainer } from 'react-toastify';
 
 import './globals.css';
 import Navbar from '@/components/Navbar';
@@ -32,6 +33,7 @@ export default async function RootLayout({
           <Navbar portfolioData={portfolioData} />
           {children}
           <Footer portfolioData={portfolioData} />
+          <ToastContainer position="bottom-right" />
         </Providers>
       </body>
     </html>
