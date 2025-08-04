@@ -137,3 +137,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+:root {
+  scroll-padding-top: 65px; /* match your navbar height */
+}
+html {
+  scroll-behavior: smooth;
+}

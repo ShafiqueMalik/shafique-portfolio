@@ -1,16 +1,19 @@
 'use client';
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import { PrimaryButton } from '@/shared/components/forms/PrimaryButton';
+import InputUnderlined from '@/shared/components/forms/InputUnderlined';
+import InputField from '@/shared/components/forms/InputField';
 
 export default function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
+
+  const methods = useForm();
   const {
-    register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = methods;
   console.log('e', errors);
 
   const onSubmit = (data) => {
@@ -27,7 +30,8 @@ export default function ContactForm() {
           setIsSuccess(true);
           setIsFormSubmitting(false);
         },
-        () => {
+        (e) => {
+          console.error('EmailJS error:', e);
           setIsError(true);
           setIsFormSubmitting(false);
         }
@@ -38,9 +42,41 @@ export default function ContactForm() {
   const [isError, setIsError] = useState(false);
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto mt-10">
-      <input type="hidden" name="subject" value="Portfolio - Form Submission" />
-      <div className="relative z-0 w-full mb-4 group">
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)} className="mt-10" ref={formRef}>
+        <input type="hidden" name="subject" value="Portfolio - Form Submission" />
+        <div className="flex flex-col gap-6">
+          <InputField
+            name="name"
+            label="Full Name"
+            rules={{ required: 'Name is required' }}
+            error={errors.name?.message as string}
+            placeholder="Enter your name"
+          />
+          <InputField
+            name="user_email"
+            type="email"
+            label="Email"
+            rules={{
+              required: 'Email is required',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Invalid email address',
+              },
+            }}
+            error={errors.user_email?.message as string}
+            placeholder="Enter your email"
+          />
+          <InputField
+            name="message"
+            label="Message"
+            as="textarea"
+            placeholder="Enter your message..."
+            rules={{ required: 'Message is required' }}
+            error={errors.message?.message as string}
+          />
+        </div>
+        {/* <div className="relative z-0 w-full mb-4 group">
         <input
           type="text"
           {...register('name', { required: 'Name is required' })}
@@ -72,9 +108,9 @@ export default function ContactForm() {
         {typeof errors.name?.message === 'string' && (
           <p className="mt-1 text-xs text-red-600">{errors.name.message}</p>
         )}
-      </div>
+      </div> */}
 
-      <div className="relative z-0 w-full mb-4 group">
+        {/* <div className="relative z-0 w-full mb-4 group">
         <input
           type="email"
           {...register('user_email', {
@@ -107,9 +143,9 @@ export default function ContactForm() {
         {typeof errors.user_email?.message === 'string' && (
           <p className="mt-1 text-xs text-red-600">{errors.user_email.message}</p>
         )}
-      </div>
+      </div> */}
 
-      <div className="relative z-0 w-full mb-8 group">
+        {/* <div className="relative z-0 w-full mb-8 group">
         <textarea
           {...register('message', { required: 'Message is required' })}
           id="message"
@@ -135,11 +171,12 @@ export default function ContactForm() {
         {typeof errors.message?.message === 'string' && (
           <p className="mt-1 text-xs text-red-600">{errors.message.message}</p>
         )}
-      </div>
+      </div> */}
 
-      <PrimaryButton className="w-full mt-2" disabled={isFormSubmitting}>
-        Send Message
-      </PrimaryButton>
+        <PrimaryButton type="submit" className="w-full mt-4" disabled={isFormSubmitting}>
+          Send Message
+        </PrimaryButton>
+      </form>
 
       {isSuccess && (
         <p className="mt-5 text-xl text-white bg-green-700/80 p-3 rounded-[10px]">
@@ -151,6 +188,6 @@ export default function ContactForm() {
           Something went wrong! Please try resending your message or contact me directly.
         </p>
       )}
-    </form>
+    </FormProvider>
   );
 }

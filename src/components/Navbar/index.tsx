@@ -17,6 +17,7 @@ function Navbar({ portfolioData }: NavbarProps) {
 
         <Logo className="hidden mr-5 lg:ml-0 lg:flex" />
         <MenuListClient />
+
         <div className="flex items-center gap-4 lg:gap-5">
           <HireMeButton />
           <ThemeSwitch />
