@@ -41,7 +41,7 @@ async function HeroSection({ portfolioData }: HeroSectionProps) {
             className="h-full grid grid-cols-[1fr_1fr] lg:grid-cols-[1fr_250px_1fr] gap-5 px-10 py-16 lg:px-0 
         sm:gap-8"
           >
-            <Flex className="flex-col justify-between hidden lg:flex">
+            <Flex className="flex-col gap-16 justify-center hidden lg:flex">
               <div>
                 <Text variant="primary" className="dark:text-dark-text-light">
                   Hi, I am
@@ -54,19 +54,19 @@ async function HeroSection({ portfolioData }: HeroSectionProps) {
                   {portfolioData?.firstName} {portfolioData?.lastName}
                 </Text>
               </div>
-              <Flex className="uppercase gap-2 items-center text-primary dark:text-dark-text">
+              <Flex className="uppercase gap-2 items-center text-primary  dark:text-dark-text">
                 <Text className="text-[40px]">{portfolioData?.experience}+</Text>
-                <Flex className="flex-col">
+                <Flex className="flex-col font-light text-gray-400  ">
                   <Text>Years</Text>
                   <Text>Experience</Text>
                 </Flex>
               </Flex>
 
-              <SocialIcons
+              {/* <SocialIcons
                 className="gap-5 md:gap-10 "
                 iconClassName="dark:text-dark-text"
                 portfolioData={portfolioData}
-              />
+              /> */}
             </Flex>
             <div className="  rounded-full flex-1 flex justify-center flex-col items-center">
               {profileImage && (
