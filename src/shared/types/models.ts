@@ -76,3 +76,35 @@ export interface IMySkills {
   sectionSubtitle: string;
   skillsGroups: ISkillGroup[];
 }
+
+// journey
+export interface IJob {
+  company: string;
+  positions: string[];
+  startDate: string; // Format: "MMM YYYY" (e.g. "Oct 2022")
+  endDate: string; // Format: "MMM YYYY" or "Present"
+}
+export interface IExperience {
+  title: string;
+  jobs: IJob[];
+}
+
+// education
+export interface IDegree {
+  degree: string;
+  field: string;
+  startYear: number;
+  endYear: number;
+}
+export interface IEducation {
+  title: string;
+  degrees: IDegree[];
+}
+
+// Journey
+export interface IJourneyData {
+  title: string;
+  subtitle: string;
+  experienceSection: IExperience;
+  educationSection: IEducation;
+}

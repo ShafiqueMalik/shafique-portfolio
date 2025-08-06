@@ -46,3 +46,46 @@ export const getMySkillsQuery = `*[_type == "mySkills"][0]{
     }
   }
 }`;
+
+export const getExperienceQuery = `*[_type == "experience"][0] {
+  title,
+  jobs[] {
+    company,
+    positions,
+    startDate,
+    endDate
+  }
+}`;
+
+export const getEducationQuery = `*[_type == "education"][0] {
+  title,
+  degrees[] {
+    degree,
+    field,
+    startYear,
+    endYear
+  }
+}`;
+
+export const getJourneyQuery = `*[_type == "journey"][0] {
+  title,
+  subtitle,
+  experienceSection-> {
+    title,
+    jobs[] {
+      company,
+      positions,
+      startDate,
+      endDate
+    }
+  },
+  educationSection-> {
+    title,
+    degrees[] {
+      degree,
+      field,
+      startYear,
+      endYear
+    }
+  }
+}`;
