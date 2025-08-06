@@ -32,3 +32,17 @@ export const getServicesQuery = `*[_type == "myServices"][0]{
     "iconImage": iconImage.asset->url
   }
 }`;
+
+export const getMySkillsQuery = `*[_type == "mySkills"][0]{
+  sectionTitle,
+  sectionSubtitle,
+  skillsGroups[]{
+    title,
+    skills[]{
+      name,
+      proficiency,
+      iconName,
+      "iconImage": iconImage.asset->url
+    }
+  }
+}`;

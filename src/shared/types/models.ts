@@ -57,3 +57,22 @@ export interface IMyServices {
   subheading: string;
   services: IServiceItem[];
 }
+
+//
+
+export interface ISkill {
+  name: string;
+  proficiency: number;
+  iconName?: string;
+  iconImage?: string; // Resolved image URL
+}
+
+export interface ISkillGroup {
+  title: string;
+  skills: ISkill[];
+}
+export interface IMySkills {
+  sectionTitle: string;
+  sectionSubtitle: string;
+  skillsGroups: ISkillGroup[];
+}
