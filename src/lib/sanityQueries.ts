@@ -19,3 +19,16 @@ export const getPorfolioQuery = `
     }
   }
 `;
+
+export const getServicesQuery = `*[_type == "myServices"][0]{
+  heading,
+  subheading,
+  services[]{
+    title,
+    description,
+    iconName,
+    bgColor,
+    link,
+    "iconImage": iconImage.asset->url
+  }
+}`;

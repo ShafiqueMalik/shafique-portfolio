@@ -1,24 +1,31 @@
 // components/ServicesSection.js
-import Container from "@/components/layout/Container";
-import { servicesData } from "@/data/appData";
+import Container from '@/components/layout/Container';
+import { servicesData } from '@/data/appData';
+import { fetchFromSanity } from '@/lib/fetchFromSanity';
+import { getServicesQuery } from '@/lib/sanityQueries';
+import { IMyServices } from '@/shared/types/models';
+import { iconsMap } from '@/shared/utils/Icons';
 
-const ServicesSection = () => {
+const ServicesSection = async () => {
+  const servicesDataSanity = await fetchFromSanity<IMyServices>(getServicesQuery);
+  console.log('servicesDataSanity', servicesDataSanity);
+  const getIconComponent = (iconName: string) => {
+    const IconComponent = iconsMap[iconName];
+    return IconComponent ? (
+      <IconComponent className="w-12 h-12 text-blue-600 dark:text-dark-text" />
+    ) : null;
+  };
   return (
-    <section
-      className=" scroll-mt-[64px] py-12 lg:py-16 dark:bg-dark"
-      id="services-section"
-    >
+    <section className=" scroll-mt-[64px] py-12 lg:py-16 dark:bg-dark" id="services-section">
       <Container className="" sm>
         <h2 className="text-4xl font-bold text-center mb-2 text-secondary">
-          My Services
+          {servicesDataSanity.heading}
         </h2>
         <p className="text-sm text-center max-w-[500px] mx-auto mb-8 md:mb-10 font-light">
-          My goal is to ensure that every solution I provide is not only
-          functional but also exceeds expectations in terms of performance and
-          user experience.
+          {servicesDataSanity.subheading}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
-          {servicesData.map((service, index) => (
+          {servicesDataSanity?.services.map((service, index) => (
             <div
               key={service.title}
               className="bg-white dark:bg-dark-light 
@@ -27,7 +34,8 @@ const ServicesSection = () => {
                p-6 hover:shadow-2xl transform hover:scale-105 transition-transform duration-300"
             >
               <div className="flex  mb-2">
-                <service.icon className="w-12 h-12 text-blue-600 dark:text-dark-text" />
+                {service.iconName ? getIconComponent(service.iconName) : null}
+                {/* <service.iconName className="w-12 h-12 text-blue-600 dark:text-dark-text" /> */}
               </div>
               <h3 className="text-xl font-semibold  text-gray-800 mb-0 dark:text-dark-text">
                 {service.title}

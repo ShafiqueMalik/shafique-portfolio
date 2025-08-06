@@ -42,3 +42,18 @@ export interface IPortfolioData {
     url: string;
   }[];
 }
+
+export interface IServiceItem {
+  title: string;
+  description: string;
+  iconName?: string; // Optional, used if icon is from icon library like react-icons
+  bgColor?: string; // Optional background color (e.g., "#f0f0f0")
+  link?: string; // Optional link to detail page
+  iconImage?: string; // Resolved image URL (optional)
+}
+
+export interface IMyServices {
+  heading: string;
+  subheading: string;
+  services: IServiceItem[];
+}
