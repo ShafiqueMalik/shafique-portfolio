@@ -108,3 +108,26 @@ export interface IJourneyData {
   experienceSection: IExperience;
   educationSection: IEducation;
 }
+
+// recent works
+export interface IRecentWorks {
+  sectionTitle: string;
+  sectionSubtitle: string;
+  works: IWorkItem[];
+}
+
+export interface IWorkItem {
+  name: string;
+  slug?: { current: string };
+  shortDescription?: string;
+  longDescription?: any;
+  image?: string;
+  technologies: string[];
+  categories: string[];
+  links?: {
+    live?: string;
+    github?: string;
+    caseStudy?: string;
+  };
+  featured?: boolean;
+}

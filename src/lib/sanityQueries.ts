@@ -1,8 +1,3 @@
-export const getHeroQuery = `*[_type == "hero"][0]`;
-export const getSocialsQuery = `*[_type == "hero"][0]{
-  socials
-}`;
-
 export const getPorfolioQuery = `
   *[_type == "portfolioInformation"][0] {
     ...,
@@ -87,5 +82,26 @@ export const getJourneyQuery = `*[_type == "journey"][0] {
       startYear,
       endYear
     }
+  }
+}`;
+
+export const getRecentWorksQuery = `*[_type == "recentWorks"][0]{
+  sectionTitle,
+  sectionSubtitle,
+  works[]{
+    name,
+    "slug": slug.current,
+    shortDescription,
+    longDescription,
+    "thumbnail": thumbnail.asset->url,
+    "imageUrl": image.asset->url,
+    technologies,
+    categories,
+    links{
+      live,
+      github,
+      caseStudy
+    },
+    featured
   }
 }`;

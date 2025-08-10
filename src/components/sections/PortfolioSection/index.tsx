@@ -1,8 +1,14 @@
-import Container from "@/components/layout/Container";
-import { ProjectCategories, ProjectsData } from "@/data/appData";
-import PortfolioCard from "./PortfolioCard";
+import Container from '@/components/layout/Container';
+import { ProjectCategories, ProjectsData } from '@/data/appData';
+import PortfolioCard from './PortfolioCard';
+import { fetchFromSanity } from '@/lib/fetchFromSanity';
+import { IRecentWorks } from '@/shared/types/models';
+import { getRecentWorksQuery } from '@/lib/sanityQueries';
 
-const PortfolioSection = () => {
+const PortfolioSection = async () => {
+  const recentWorks = await fetchFromSanity<IRecentWorks>(getRecentWorksQuery);
+  console.log('Recent Works Data:', recentWorks);
+  const { sectionTitle, sectionSubtitle, works } = recentWorks || {};
   return (
     <section
       id="portfolio-section"
@@ -10,10 +16,10 @@ const PortfolioSection = () => {
     >
       <Container className=" " sm>
         <p className="text-primary-light  text-center dark:text-dark-text-light">
-          My Portfolio
+          {sectionSubtitle || 'My Recent Works'}
         </p>
         <h2 className="text-4xl font-bold text-center text-secondary mb-5 md:mb-10">
-          Recent Works
+          {sectionTitle || 'Recent Works'}
         </h2>
         {/* <ul className="flex flex-wrap justify-center gap-y-2 gap-5 md:gap-8 mb-10 items-center">
           {ProjectCategories.map((category, idx) => (
@@ -36,7 +42,7 @@ const PortfolioSection = () => {
           ))}
         </ul> */}
         <div className="grid grid-cols-1 mob-lg:grid-cols-2 md:grid-cols-3 gap-10 md:gap-10 ">
-          {ProjectsData.ui.map((project: any, index: number) => (
+          {works.map((project: any, index: number) => (
             <PortfolioCard key={project.name} project={project} />
           ))}
         </div>

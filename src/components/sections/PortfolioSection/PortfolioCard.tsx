@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { MdOutlineArrowOutward } from "react-icons/md";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import { MdOutlineArrowOutward } from 'react-icons/md';
 
 type PortfolioCardProps = {
   project: any;
@@ -24,14 +24,10 @@ export default function PortfolioCard({ project }: PortfolioCardProps) {
         className="absolute inset-0  bg-[rgba(0,0,0,0.7)] group-hover:bg-[rgba(0,0,0,0.8)] flex flex-col justify-end items-center p-5 
      opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       >
-        <h3 className="text-white text-xl font-semibold mb-2 capitalize">
-          {project.name}
-        </h3>
-        <p className="text-gray-300 text-xs mb-4 uppercase">
-          {project.technologies?.join(" / ")}
-        </p>
+        <h3 className="text-white text-xl font-semibold mb-2 capitalize">{project.name}</h3>
+        <p className="text-gray-300 text-xs mb-4 uppercase">{project.technologies?.join(' / ')}</p>
         <Link
-          href={project.link}
+          href={project.links?.live}
           className="text-white underline flex items-center"
           target="_blank"
           rel="noreferrer"

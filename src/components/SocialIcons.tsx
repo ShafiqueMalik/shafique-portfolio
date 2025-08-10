@@ -2,7 +2,6 @@ import { socialData, socialIcons } from '@/data/appData';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import Flex from './layout/Flex';
-import { fetchSocialsData } from '@/lib/sanityDataFetching/fetchHeroData';
 import { IPortfolioData } from '@/shared/types/models';
 
 type SocialIconsProps = {
