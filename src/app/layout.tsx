@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://malikportfolio.netlify.app/og-thumbnail.png',
-        width: 730,
-        height: 547,
+        width: 1200,
+        height: 630,
         alt: 'Shafique Malik - Front End Developer',
       },
     ],
