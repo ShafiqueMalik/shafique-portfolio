@@ -17,6 +17,23 @@ export const metadata: Metadata = {
   title: 'Shafique Malik - Front End Developer',
   description:
     'Shafique Malik - Front End Developer. React, Next.js, TypeScript, Tailwind CSS, Node.js, Express, MongoDB, and more.',
+  openGraph: {
+    title: 'Shafique Malik - Front End Developer',
+    description:
+      'Front End Developer, React, Next.js, TypeScript, Tailwind CSS, Node.js, Express, MongoDB',
+    url: 'https://malikportfolio.netlify.app/',
+    siteName: 'Your Portfolio Title',
+    images: [
+      {
+        url: 'https://malikportfolio.netlify.app/og-thumbnail.png',
+        width: 730,
+        height: 547,
+        alt: 'Shafique Malik - Front End Developer',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default async function RootLayout({
