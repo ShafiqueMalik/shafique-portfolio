@@ -20,7 +20,7 @@ type HeroSectionProps = {
 };
 async function HeroSection({ portfolioData }: HeroSectionProps) {
   const { profileImage, resume } = portfolioData || {};
-  const fileUrl = getFileUrl(resume?.asset?._ref as string);
+  const fileUrl = resume?.asset?.url;
 
   return (
     <>

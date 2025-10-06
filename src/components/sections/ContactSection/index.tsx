@@ -87,7 +87,7 @@ const ContactSection = ({ portfolioData }: ContactSectionProps) => {
             </ul>
 
             <Link
-              href={getFileUrl(portfolioData?.resume?.asset?._ref as string) || ''}
+              href={portfolioData?.resume?.asset?.url || ''}
               download="Shafique Malik Resume"
               className="w-full underline flex items-center gap-2 mt-[30px]"
             >
