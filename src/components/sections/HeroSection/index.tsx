@@ -20,6 +20,7 @@ type HeroSectionProps = {
 };
 async function HeroSection({ portfolioData }: HeroSectionProps) {
   const { profileImage, resume } = portfolioData || {};
+  console.log('resueme', resume);
   const fileUrl = resume?.asset?.url;
 
   return (
@@ -110,7 +111,7 @@ async function HeroSection({ portfolioData }: HeroSectionProps) {
                     Contact Me
                   </SecondaryButton>
                 </a>
-                <Link href={fileUrl || ''} download="Shafique Malik Resume" className="w-full">
+                <Link href={fileUrl || ''} download="Shafique Malik - Resume" className="w-full">
                   <SecondaryButton pill className="w-full" outlined>
                     <MdOutlineFileDownload size={20} /> Download CV
                   </SecondaryButton>
