@@ -21,7 +21,7 @@ function Navbar({ portfolioData }: NavbarProps) {
         <MenuListClient />
 
         <div className="flex items-center gap-4 lg:gap-5">
-          <DownloadCvButton portfolioData={portfolioData} />
+          <DownloadCvButton portfolioData={portfolioData} className="sm:hidden" />
           <HireMeButton />
           <ThemeSwitch />
         </div>
