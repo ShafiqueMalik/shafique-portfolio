@@ -25,7 +25,7 @@ async function AboutSection({ portfolioData }: AboutSectionProps) {
               height={500}
               loading="eager"
               className="  bg-secondary/70 border-[5px] border-gray-100 
-            min-w-[200px] w-[40%] h-[70%] sm:translate-x-[60px] z-10"
+            min-w-[200px] w-[40%] h-auto max-w-full sm:translate-x-[60px] z-10"
             />
           )}
         </div>
