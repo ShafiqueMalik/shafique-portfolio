@@ -15,7 +15,7 @@ export default function PortfolioCard({ project }: PortfolioCardProps) {
       <Image
         src={project.thumbnail}
         alt={`${project.name} thumbnail`}
-        className="w-full h-[250px] object-fill"
+        className="w-full h-[250px] object-cover"
         loading="lazy"
         width={250}
         height={250}
