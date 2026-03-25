@@ -15,7 +15,7 @@ type ContactSectionProps = {
 };
 const ContactSection = ({ portfolioData }: ContactSectionProps) => {
   return (
-    <section id="contact-section" className=" scroll-mt-[64px] py-12 ">
+    <section id="contact-section" className=" scroll-mt-[64px] py-12 bg-background-light">
       <Container className=" " sm>
         <p className="text-primary-light  text-center dark:text-dark-text-light">Contact Info</p>
         <h2 className="text-4xl font-bold text-center text-secondary mb-5 md:mb-10">

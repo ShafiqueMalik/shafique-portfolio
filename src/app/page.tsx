@@ -1,4 +1,5 @@
 import AboutSection from '@/components/sections/AboutSection';
+import CertificatesSection from '@/components/sections/CertificatesSection';
 import ContactSection from '@/components/sections/ContactSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
 import HeroSection from '@/components/sections/HeroSection';
@@ -28,7 +29,7 @@ export default async function Home() {
       <PortfolioSection />
       <MySkillsSection />
       <ExperienceSection />
-
+      <CertificatesSection />
       <ContactSection portfolioData={portfolioData} />
       <SocialIcons
         className="hidden lg:flex  fixed left-2 lg:left-8 top-1/2 gap-5 md:gap-8 z-20 -translate-y-1/2 
