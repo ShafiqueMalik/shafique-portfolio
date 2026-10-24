@@ -12,7 +12,7 @@ export function Hero({ portfolio }: { portfolio: IPortfolioData }) {
   const facts = [
     { value: `${portfolio.experience}+`, label: 'Years of experience' },
     { value: `${portfolio.completedProjects}+`, label: 'Projects delivered' },
-    { value: '5', label: 'Developers mentored' },
+    { value: '100%', label: 'Commitment to Quality' },
   ]
 
   return (
