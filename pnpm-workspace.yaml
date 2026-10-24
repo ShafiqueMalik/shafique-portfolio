@@ -1,5 +1,6 @@
 pmOnFail: ignore
 
+minimumReleaseAge: 0
+
 minimumReleaseAgeExclude:
-  - '@next/*'
   - next
