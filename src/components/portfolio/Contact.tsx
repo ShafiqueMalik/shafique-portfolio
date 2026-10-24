@@ -20,7 +20,13 @@ export function Contact({ portfolio }: { portfolio: IPortfolioData }) {
 
   const channels = (portfolio.socialLinks ?? []).map((link) => {
     const meta = platformMeta[link.platform] ?? { icon: Link2, label: link.platform }
-    return { ...meta, key: link._key, href: link.url, value: valueFor[link.platform] ?? link.url }
+    return {
+      ...meta,
+      key: link._key,
+      platform: link.platform,
+      href: link.url,
+      value: valueFor[link.platform] ?? link.url,
+    }
   })
 
   return (
@@ -34,22 +40,33 @@ export function Contact({ portfolio }: { portfolio: IPortfolioData }) {
             </h2>
           </div>
           <ul className="flex flex-col divide-y divide-border border-y border-border">
-            {channels.map(({ key, icon: Icon, label, value, href }) => (
-              <li key={key}>
-                <a
-                  href={href}
-                  target={href.startsWith('http') ? '_blank' : undefined}
-                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="flex items-center gap-4 py-4 transition-colors hover:text-primary"
-                >
+            {channels.map(({ key, platform, icon: Icon, label, value, href }) => {
+              const content = (
+                <>
                   <Icon className="size-5 shrink-0 text-primary" aria-hidden="true" />
                   <span className="flex min-w-0 flex-col">
                     <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{label}</span>
                     <span className="break-words font-medium">{value}</span>
                   </span>
-                </a>
-              </li>
-            ))}
+                </>
+              )
+              return (
+                <li key={key}>
+                  {platform === 'location' ? (
+                    <div className="flex items-center gap-4 py-4">{content}</div>
+                  ) : (
+                    <a
+                      href={href}
+                      target={href.startsWith('http') ? '_blank' : undefined}
+                      rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="flex items-center gap-4 py-4 transition-colors hover:text-primary"
+                    >
+                      {content}
+                    </a>
+                  )}
+                </li>
+              )
+            })}
           </ul>
         </div>
         <div className="glass rounded-3xl p-6 md:p-8 lg:col-span-7">

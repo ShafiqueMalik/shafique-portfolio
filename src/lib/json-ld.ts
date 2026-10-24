@@ -67,7 +67,7 @@ export async function portfolioJsonLd(input: {
   const pageUrl = `${origin}/`
   const personId = `${origin}/#person`
   const name = `${input.portfolio.firstName} ${input.portfolio.lastName}`.trim()
-  const portrait = `${origin}/portraits/transparent-standing.png`
+  const portrait = `${origin}/portraits/hero-portrait.png`
   const description = [
     roleDescription ?? input.portfolio.roleDescription,
     'Open to work and open to relocation from Lahore, Punjab, Pakistan.',
@@ -149,6 +149,7 @@ export async function portfolioJsonLd(input: {
       knowsLanguage: languages.map((language) => language.name),
       knowsAbout,
       sameAs: (input.portfolio.socialLinks ?? [])
+        .filter((link) => link.platform !== 'location')
         .map((link) => link.url)
         .filter((url) => /^https?:\/\//i.test(url)),
       hasOccupation: omitEmpty({

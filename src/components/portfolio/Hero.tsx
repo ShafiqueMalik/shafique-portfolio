@@ -6,7 +6,6 @@ import type { IPortfolioData } from '@/lib/types'
 
 export function Hero({ portfolio }: { portfolio: IPortfolioData }) {
   const fullName = `${portfolio.firstName} ${portfolio.lastName}`
-  const photo = portfolio.profileImage2?.asset?.url ?? portfolio.profileImage?.asset?.url
 
   // TODO: update this in sanity.io → Portfolio › experience & completedProjects
   const facts = [
@@ -59,33 +58,43 @@ export function Hero({ portfolio }: { portfolio: IPortfolioData }) {
           </div>
         </div>
 
-        {photo ? (
-          <div className="rise lg:col-span-5" style={{ animationDelay: '140ms' }}>
-            <figure className="glass relative mx-auto w-full max-w-sm rounded-3xl p-3">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                {/* TODO: optionally upload public/portraits/transparent-standing.png to sanity.io → Portfolio › profileImage2 */}
-                <Image
-                  src="/portraits/transparent-standing.png"
-                  alt={`Portrait of ${fullName}`}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 33vw, 90vw"
-                  className="object-contain object-bottom"
-                />
+        <div className="rise relative pt-36 lg:col-span-5" style={{ animationDelay: '140ms' }}>
+          <figure className="glass relative mx-auto w-full max-w-sm overflow-visible rounded-[2rem] !border-t-0 p-0">
+            <div className="relative aspect-[3/2] overflow-hidden rounded-[1.4rem] bg-gradient-to-b from-primary/15 via-background/30 to-accent/10">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-2 top-2 select-none font-mono text-8xl font-semibold leading-none tracking-tighter text-foreground/[0.06]"
+              >
+                SM
               </div>
-  <figcaption className="absolute -bottom-5 left-1/2 flex w-[calc(100%-2rem)] -translate-x-1/2 flex-col items-center gap-2 rounded-2xl border border-border bg-background/95 px-4 py-3 text-center text-foreground shadow-xl backdrop-blur-xl sm:w-[calc(100%-3rem)] sm:flex-row sm:justify-between sm:gap-3 sm:text-left">
-  <span className="flex flex-col items-center sm:items-start">
-  <span className="font-mono text-sm font-semibold">{fullName}</span>
-  <span className="text-xs text-foreground/75">React.js · Next.js · TypeScript</span>
-  </span>
-  <span className="flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/15 px-2.5 py-1 font-mono text-xs font-medium text-foreground">
-                  <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
-                  Open to work
-                </span>
-              </figcaption>
-            </figure>
-          </div>
-        ) : null}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-10 bottom-8 h-8 rounded-[100%] bg-foreground/20 blur-2xl"
+              />
+            </div>
+            {/* TODO: when this portrait changes, replace public/portraits/hero-portrait.png */}
+            <div className="absolute inset-x-1 -top-36 bottom-12">
+              <Image
+                src="/portraits/hero-portrait.png"
+                alt={`Portrait of ${fullName}`}
+                fill
+                priority
+                sizes="(min-width: 1024px) 33vw, 90vw"
+                className="object-contain object-bottom"
+              />
+            </div>
+            <figcaption className="absolute -bottom-5 left-1/2 z-10 flex w-[calc(100%-2rem)] -translate-x-1/2 flex-col items-center gap-2 rounded-2xl border border-border bg-background/95 px-4 py-3 text-center text-foreground shadow-xl backdrop-blur-xl sm:w-[calc(100%-3rem)] sm:flex-row sm:justify-between sm:gap-3 sm:text-left">
+              <span className="flex flex-col items-center sm:items-start">
+                <span className="font-mono text-sm font-semibold">{fullName}</span>
+                <span className="text-xs text-foreground/75">React.js · Next.js · TypeScript</span>
+              </span>
+              <span className="flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/15 px-2.5 py-1 font-mono text-xs font-medium text-foreground">
+                <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
+                Open to work
+              </span>
+            </figcaption>
+          </figure>
+        </div>
       </div>
 
       <dl
