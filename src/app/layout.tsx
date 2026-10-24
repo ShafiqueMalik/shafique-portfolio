@@ -1,58 +1,66 @@
-import type { Metadata } from 'next';
-import { ToastContainer } from 'react-toastify';
+import { Analytics } from '@vercel/analytics/next'
+import type { Metadata, Viewport } from 'next'
+import { Inter, Space_Grotesk } from 'next/font/google'
+import { ThemeProvider } from '@/components/shared/ThemeProvider'
+import { siteDescription, siteOrigin, siteTitle } from '@/lib/site'
+import './globals.css'
 
-import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer.tsx';
-import { Providers } from '@/providers';
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const grotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-grotesk' })
 
-import { Inter } from 'next/font/google';
-import { fetchFromSanity } from '@/lib/fetchFromSanity';
-import { IPortfolioData } from '@/shared/types/models';
-import { getPorfolioQuery } from '@/lib/sanityQueries';
+export async function generateMetadata(): Promise<Metadata> {
+  const origin = await siteOrigin()
 
-const inter = Inter({ subsets: ['latin'] });
+  return {
+    metadataBase: new URL(origin),
+    title: siteTitle,
+    description: siteDescription,
+    applicationName: 'Shafique Malik',
+    authors: [{ name: 'Shafique Malik', url: origin }],
+    creator: 'Shafique Malik',
+    alternates: { canonical: '/' },
+    openGraph: {
+      type: 'profile',
+      title: siteTitle,
+      description: siteDescription,
+      url: '/',
+      siteName: 'Shafique Malik',
+      locale: 'en_US',
+      firstName: 'Shafique',
+      lastName: 'Malik',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: siteTitle,
+      description: siteDescription,
+    },
+    icons: {
+      icon: [{ url: '/icon.svg?v=sm', type: 'image/svg+xml' }],
+      apple: '/icon.svg?v=sm',
+    },
+  }
+}
 
-export const metadata: Metadata = {
-  title: 'Shafique Malik - Front End Developer',
-  description:
-    'Shafique Malik - Front End Developer. React, Next.js, TypeScript, Tailwind CSS, Node.js, Express, MongoDB, and more.',
-  openGraph: {
-    title: 'Shafique Malik - Front End Developer',
-    description:
-      'Front End Developer, React, Next.js, TypeScript, Tailwind CSS, Node.js, Express, MongoDB',
-    url: 'https://malikportfolio.netlify.app/',
-    siteName: 'Your Portfolio Title',
-    images: [
-      {
-        url: 'https://malikportfolio.netlify.app/og-thumbnail.png',
-        width: 1200,
-        height: 630,
-        alt: 'Shafique Malik - Front End Developer',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-};
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#eef2f8' },
+    { media: '(prefers-color-scheme: dark)', color: '#060a14' },
+  ],
+}
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-  const portfolioData = await fetchFromSanity<IPortfolioData>(getPorfolioQuery);
-
   return (
-    <html lang="en" className="overflow-x-hidden scroll-smooth  " suppressHydrationWarning>
-      <body className={inter.className + ' bg-white dark:bg-dark'} style={{ overflowX: 'hidden' }}>
-        <Providers>
-          <Navbar portfolioData={portfolioData} />
+    <html lang="en" className={`${inter.variable} ${grotesk.variable} bg-background`} suppressHydrationWarning>
+      <body className="antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
-          <Footer portfolioData={portfolioData} />
-          <ToastContainer position="bottom-right" />
-        </Providers>
+        </ThemeProvider>
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
-  );
+  )
 }

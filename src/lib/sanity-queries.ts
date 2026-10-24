@@ -1,3 +1,4 @@
+// TODO: Download CV uses public/cv.pdf, not this resume asset. When resume is updated in sanity.io → Portfolio › resume, replace public/cv.pdf as well.
 export const getPortfolioQuery = `
   *[_type == "portfolioInformation"][0] {
     ...,

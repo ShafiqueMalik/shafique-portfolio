@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
-import { SectionHeading } from './section-heading'
+import { SectionHeading } from '@/components/shared/SectionHeading'
 import type { IRecentWorks, IWorkItem } from '@/lib/types'
 import { recentWorks } from '@/lib/content'
 

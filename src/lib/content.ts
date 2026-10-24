@@ -1,3 +1,5 @@
+import type { IMyServices, IServiceItem } from '@/lib/types'
+
 /**
  * Temporary copy overrides for text that currently lives in Sanity.
  *
@@ -60,6 +62,17 @@ export const services = {
   ] as { title: string; description: string; iconName?: string | null; iconImage?: string | null }[],
 }
 
+export function listedServices(data: IMyServices): IServiceItem[] {
+  const current = data.services ?? []
+  return [
+    ...current.filter((service) => !services.hidden.includes(service.title)),
+    ...services.extra.filter((extra) => !current.some((service) => service.title === extra.title)),
+  ].map((service) => ({
+    ...service,
+    ...(services.items[service.title] ?? {}),
+  }))
+}
+
 export const skills = {
   // TODO: update this in sanity.io → My Skills › sectionTitle
   sectionTitle: 'Skills & expertise' as string | undefined,
@@ -72,7 +85,11 @@ export const journey = {
   title: 'Professional experience' as string | undefined,
   // TODO: update this in sanity.io → Journey › subtitle
   subtitle: 'Career' as string | undefined,
+  description:
+    '8+ years across consultancies and product teams, leading front-end delivery for enterprise, banking and government clients.',
 }
+
+export const availability = 'Available for freelance, contract and full-time projects.'
 
 export const recentWorks = {
   // TODO: update this in sanity.io → Recent Works › sectionTitle

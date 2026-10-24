@@ -1,7 +1,7 @@
 import { Code2, LayoutTemplate, MapPinned, Palette, ScanSearch, Sparkles, Webhook, type LucideIcon } from 'lucide-react'
-import { SectionHeading } from './section-heading'
+import { SectionHeading } from '@/components/shared/SectionHeading'
 import type { IMyServices } from '@/lib/types'
-import { services as copy } from '@/lib/content'
+import { availability, listedServices, services as copy } from '@/lib/content'
 
 // Sanity stores react-icons names; map them to the lucide icons used by this design.
 const iconMap: Record<string, LucideIcon> = {
@@ -25,11 +25,7 @@ export function Services({ data }: { data: IMyServices }) {
           description={copy.subheading ?? data.subheading}
         />
         <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            ...(data.services ?? []).filter((s) => !copy.hidden.includes(s.title)),
-            ...copy.extra.filter((extra) => !data.services?.some((s) => s.title === extra.title)),
-          ].map((original) => {
-            const service = { ...original, ...copy.items[original.title] }
+          {listedServices(data).map((service) => {
             const Icon = (service.iconName && iconMap[service.iconName]) || Sparkles
             return (
               <li key={service.title} className="glass group flex flex-col gap-6 rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-1">
@@ -49,6 +45,7 @@ export function Services({ data }: { data: IMyServices }) {
           })}
           <li className="flex flex-col justify-between gap-6 rounded-3xl bg-primary p-8 text-primary-foreground shadow-xl shadow-primary/25">
             <p className="text-lg font-semibold tracking-tight">Have something else in mind?</p>
+            <p className="text-sm text-primary-foreground/80">{availability}</p>
             <a href="#contact" className="font-mono text-sm underline underline-offset-4">
               Start a conversation
             </a>

@@ -7,7 +7,6 @@ import type { IPortfolioData } from '@/lib/types'
 export function Hero({ portfolio }: { portfolio: IPortfolioData }) {
   const fullName = `${portfolio.firstName} ${portfolio.lastName}`
   const photo = portfolio.profileImage2?.asset?.url ?? portfolio.profileImage?.asset?.url
-  const resumeUrl = portfolio.resume?.asset?.url
 
   // TODO: update this in sanity.io → Portfolio › experience & completedProjects
   const facts = [
@@ -48,15 +47,15 @@ export function Hero({ portfolio }: { portfolio: IPortfolioData }) {
               View selected work
               <ArrowDownRight className="size-4" aria-hidden="true" />
             </a>
-            {resumeUrl ? (
-              <a
-                href={`${resumeUrl}?dl=`}
-                className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors hover:text-primary"
-              >
-                <Download className="size-4" aria-hidden="true" />
-                Download CV
-              </a>
-            ) : null}
+            {/* TODO: Download serves public/cv.pdf. When the CV is updated in sanity.io → Portfolio › resume, replace public/cv.pdf as well. */}
+            <a
+              href="/cv.pdf"
+              download="cv.pdf"
+              className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors hover:text-primary"
+            >
+              <Download className="size-4" aria-hidden="true" />
+              Download CV
+            </a>
           </div>
         </div>
 

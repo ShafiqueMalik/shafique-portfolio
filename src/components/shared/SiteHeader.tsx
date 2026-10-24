@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import type { IPortfolioData } from '@/lib/types'
-import { ThemeToggle } from './theme-toggle'
-import { MobileNav } from './mobile-nav'
+import { ThemeToggle } from './ThemeToggle'
+import { MobileNav } from './MobileNav'
 
 const links = [
   { href: '#services', label: 'Services' },

@@ -87,13 +87,6 @@ export function Skills({ data }: { data: IMySkills }) {
             </div>
           ))}
         </dl>
-
-        <p className="mt-6 flex items-center gap-2 font-mono text-xs text-muted-foreground">
-          <span className="inline-block size-2.5 rounded-sm bg-primary" aria-hidden="true" />
-          Daily drivers
-          <span className="ml-4 inline-block size-2.5 rounded-sm border border-foreground/30" aria-hidden="true" />
-          Working experience
-        </p>
         </div>
       </div>
     </section>

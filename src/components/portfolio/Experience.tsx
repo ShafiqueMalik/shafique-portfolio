@@ -1,5 +1,5 @@
-import { SectionHeading } from './section-heading'
-import { certifications, highlightsFor, languages } from '@/lib/cv'
+import { SectionHeading } from '@/components/shared/SectionHeading'
+import { brandsFor, certifications, highlightsFor, languages } from '@/lib/cv'
 import type { IJourneyData } from '@/lib/types'
 import { journey } from '@/lib/content'
 
@@ -13,13 +13,14 @@ export function Experience({ data }: { data: IJourneyData }) {
       <SectionHeading
         label={journey.subtitle ?? data.subtitle}
         title={journey.title ?? data.experienceSection?.title ?? data.title}
-        description="8+ years across consultancies and product teams — from .NET foundations to leading front-end delivery for enterprise, banking and government clients."
+        description={journey.description}
       />
 
       <ol className="glass mt-14 flex flex-col divide-y divide-border rounded-3xl px-6 md:px-10">
         {jobs.map((job) => {
           const current = job.endDate?.trim().toLowerCase() === 'present'
           const highlights = highlightsFor(job.company)
+          const brands = brandsFor(job.company)
           return (
             <li
               key={`${job.company}-${job.startDate}`}
@@ -43,15 +44,39 @@ export function Experience({ data }: { data: IJourneyData }) {
                   ))}
                 </ul>
               </div>
-              {highlights.length ? (
-                <ul className="flex flex-col gap-2 text-pretty leading-relaxed md:col-span-5">
-                  {highlights.map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="mt-2.5 size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              {highlights.length || brands.length ? (
+                <div className="flex flex-col gap-4 md:col-span-5">
+                  {highlights.length ? (
+                    <ul className="flex flex-col gap-2 text-pretty leading-relaxed">
+                      {highlights.map((item) => (
+                        <li key={item} className="flex gap-3">
+                          <span className="mt-2.5 size-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                  {brands.length ? (
+                    <div className="flex flex-wrap items-center gap-x-2.5 gap-y-2">
+                      <span className="text-xs text-muted-foreground">Worked on</span>
+                      <ul className="flex flex-wrap gap-1.5">
+                        {brands.map((brand) => (
+                          <li key={brand.name}>
+                            <a
+                              href={brand.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="glass inline-flex rounded-full px-2.5 py-1 text-xs font-medium transition-colors hover:text-primary"
+                            >
+                              {brand.name}
+                              <span className="sr-only"> (opens in a new tab)</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
               ) : null}
             </li>
           )

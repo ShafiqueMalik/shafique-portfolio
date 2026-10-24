@@ -81,18 +81,12 @@ export const skillGroups: SkillGroup[] = [
 ]
 
 export const jobHighlights: Record<string, string[]> = {
-  systems: [
-    'Lead front-end for enterprise clients and mentor a team of 5 developers.',
-    'Architected Shadcn/UI component libraries that standardize UI across projects.',
-  ],
+  systems: ['Lead front-end for enterprise clients and mentor a team of 5 developers.'],
   royal: [
     'Cut page load time by 50% with code splitting, lazy loading and bundle reduction.',
     'Built multi-brand themes with design tokens and Redux Toolkit state.',
   ],
-  phenologix: [
-    'Built mobile-first SPAs with React.js, REST APIs, Google Maps and Leaflet.',
-    'Guided junior developers and gathered requirements directly with clients.',
-  ],
+  phenologix: ['Built mobile-first SPAs with React.js, REST APIs, Google Maps and Leaflet.'],
   text: ['Built web applications with ASP.NET Web Forms, SQL Server and jQuery.'],
 }
 
@@ -101,13 +95,19 @@ export function highlightsFor(company: string) {
   return key ? jobHighlights[key] : []
 }
 
-// TODO: update this in sanity.io → add a "clients" list to Portfolio if you want to manage these from the CMS
-export const notableClients = [
-  { name: 'Coach', sector: 'Global e-commerce', detail: 'Tapestry, Inc.', href: 'https://www.coach.com' },
-  { name: 'Kate Spade', sector: 'Global e-commerce', detail: 'Tapestry, Inc.', href: 'https://www.katespade.com' },
-  { name: 'iPay', sector: 'FinTech · Payments', detail: 'Qatar', href: 'https://ipay.com.qa' },
-  { name: 'Pakistan Single Window', sector: 'National trade platform', detail: 'Government', href: 'https://www.psw.gov.pk' },
-] as const
+export const jobBrands: Record<string, { name: string; href: string }[]> = {
+  systems: [
+    { name: 'Coach', href: 'https://www.coach.com' },
+    { name: 'Kate Spade', href: 'https://www.katespade.com' },
+    { name: 'iPay', href: 'https://ipay.com.qa' },
+    { name: 'Pakistan Single Window', href: 'https://www.psw.gov.pk' },
+  ],
+}
+
+export function brandsFor(company: string) {
+  const key = Object.keys(jobBrands).find((k) => company.toLowerCase().includes(k))
+  return key ? jobBrands[key] : []
+}
 
 export const certifications = [
   { name: 'Node.js, Express, MongoDB & More: The Complete Bootcamp', issuer: 'Udemy', date: 'Apr 2026' },

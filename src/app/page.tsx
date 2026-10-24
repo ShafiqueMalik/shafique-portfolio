@@ -1,45 +1,48 @@
-import AboutSection from '@/components/sections/AboutSection';
-import CertificatesSection from '@/components/sections/CertificatesSection';
-import ContactSection from '@/components/sections/ContactSection';
-import ExperienceSection from '@/components/sections/ExperienceSection';
-import HeroSection from '@/components/sections/HeroSection';
-import MySkillsSection from '@/components/sections/MySkillsSection';
-import PortfolioSection from '@/components/sections/PortfolioSection';
-import ServicesSection from '@/components/sections/ServicesSection';
-import SocialIcons from '@/components/SocialIcons';
-import { Button } from '@/components/ui/button';
-import { fetchFromSanity } from '@/lib/fetchFromSanity';
-import { getPorfolioQuery } from '@/lib/sanityQueries';
-import { PrimaryButton } from '@/shared/components/forms/PrimaryButton';
-import { IPortfolioData } from '@/shared/types/models';
+import { SiteHeader } from '@/components/shared/SiteHeader'
+import { Hero } from '@/components/portfolio/Hero'
+import { Services } from '@/components/portfolio/Services'
+import { Work } from '@/components/portfolio/Work'
+import { Skills } from '@/components/portfolio/Skills'
+import { Experience } from '@/components/portfolio/Experience'
+import { Contact } from '@/components/portfolio/Contact'
+import { SiteFooter } from '@/components/shared/SiteFooter'
+import { fetchFromSanity } from '@/lib/sanity'
+import {
+  getJourneyQuery,
+  getMySkillsQuery,
+  getPortfolioQuery,
+  getRecentWorksQuery,
+  getServicesQuery,
+} from '@/lib/sanity-queries'
+import { jsonLdScript, portfolioJsonLd } from '@/lib/json-ld'
+import type { IJourneyData, IMyServices, IMySkills, IPortfolioData, IRecentWorks } from '@/lib/types'
 
-export default async function Home() {
-  const portfolioData = await fetchFromSanity<IPortfolioData>(getPorfolioQuery);
+export const revalidate = 60
+
+export default async function Page() {
+  const [portfolio, services, works, skills, journey] = await Promise.all([
+    fetchFromSanity<IPortfolioData>(getPortfolioQuery),
+    fetchFromSanity<IMyServices>(getServicesQuery),
+    fetchFromSanity<IRecentWorks>(getRecentWorksQuery),
+    fetchFromSanity<IMySkills>(getMySkillsQuery),
+    fetchFromSanity<IJourneyData>(getJourneyQuery),
+  ])
+
+  const jsonLd = await portfolioJsonLd({ portfolio, services, works, skills, journey })
 
   return (
-    <div className="">
-      {/* <div className="mt-20 ml-20">
-        <PrimaryButton outlined>CCC</PrimaryButton>
-        <Button variant="destructive">KKKK</Button>
-        <PrimaryButton onClick={() => alert('')}>CCC</PrimaryButton>
-      </div> */}
-      <HeroSection portfolioData={portfolioData} />
-      <AboutSection portfolioData={portfolioData} />
-      <ServicesSection />
-      <PortfolioSection />
-      <MySkillsSection />
-      <ExperienceSection />
-      <CertificatesSection />
-      <ContactSection portfolioData={portfolioData} />
-      <SocialIcons
-        className="hidden lg:flex  fixed left-2 lg:left-8 top-1/2 gap-5 md:gap-8 z-20 -translate-y-1/2 
-        [&>*]:shadow-md [&>*]:shadow-white
-         "
-        rounded
-        direction="column"
-        iconClassName="text-white"
-        portfolioData={portfolioData}
-      />
-    </div>
-  );
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }} />
+      <SiteHeader portfolio={portfolio} />
+      <main>
+        <Hero portfolio={portfolio} />
+        <Services data={services} />
+        <Work data={works} />
+        <Skills data={skills} />
+        <Experience data={journey} />
+        <Contact portfolio={portfolio} />
+      </main>
+      <SiteFooter portfolio={portfolio} />
+    </>
+  )
 }

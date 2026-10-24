@@ -1,5 +1,5 @@
 import { Link2, Mail, MapPin, Phone, UserRound, type LucideIcon } from 'lucide-react'
-import { ContactForm } from './contact-form'
+import { ContactForm } from './ContactForm'
 import { location } from '@/lib/cv'
 import type { IPortfolioData } from '@/lib/types'
 
