@@ -47,7 +47,7 @@ export default async function OpenGraphImage() {
           <div style={{ display: 'flex', fontSize: 68, fontWeight: 700, lineHeight: 1.02, letterSpacing: -1.5 }}>
             Shafique Malik
           </div>
-          <div style={{ display: 'flex', fontSize: 30, color: '#556074' }}>Senior Front-End Developer</div>
+          <div style={{ display: 'flex', fontSize: 30, color: '#556074' }}>Senior Frontend Engineer</div>
           <div style={{ display: 'flex', fontSize: 24, marginTop: 8 }}>React.js · Next.js · TypeScript</div>
         </div>
       </div>

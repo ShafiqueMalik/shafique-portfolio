@@ -30,7 +30,7 @@ export function Contact({ portfolio }: { portfolio: IPortfolioData }) {
   })
 
   return (
-    <section id="contact">
+    <section id="contact" className="below-fold">
       <div className="mx-auto grid max-w-6xl gap-16 px-6 py-20 md:py-28 lg:grid-cols-12">
         <div className="flex flex-col gap-10 lg:col-span-5">
           <div className="flex flex-col gap-4">

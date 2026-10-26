@@ -1,12 +1,13 @@
-export const headline = 'Senior Front-End Developer · React.js & Next.js Specialist'
+export const headline = 'Senior Frontend Engineer · React.js & Next.js Specialist'
 
 export const location = 'Lahore, Punjab, Pakistan · Open to relocation'
 
 export const summary =
-  'Senior Front-End Developer with 8+ years building scalable, mobile-first, unit-tested and internationalized SPAs with TypeScript, React.js and Next.js — across enterprise e-commerce, SaaS, banking, fintech and national government platforms.'
+  'Senior Frontend Engineer with 8+ years building scalable, mobile-first, unit-tested and internationalized SPAs with TypeScript, React.js and Next.js — across enterprise e-commerce, SaaS, banking, fintech and national government platforms.'
 
 export const coreCompetencies = [
-  'Front-End Architecture',
+  'Supabase',
+  'Frontend Architecture',
   'React.js & Next.js (SSR, SSG, ISR)',
   'TypeScript',
   'MERN Stack',
@@ -31,7 +32,7 @@ export type SkillGroup = {
 
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'Front-End',
+    title: 'Frontend',
     summary: 'Production SPAs and server-rendered apps, mobile-first from day one.',
     primary: ['TypeScript', 'React.js', 'Next.js', 'JavaScript (ES6+)'],
     supporting: ['HTML5', 'CSS3', 'Sass', 'jQuery', 'SPA Architecture', 'Mobile-First Responsive Design'],
@@ -57,7 +58,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'MERN & Back-End',
     summary: 'Enough back-end depth to own features end to end.',
-    primary: ['Node.js', 'Express.js', 'MongoDB'],
+    primary: ['Supabase', 'Node.js', 'Express.js', 'MongoDB'],
     supporting: ['Mongoose', 'REST API Design', 'JWT', 'ASP.NET', 'SQL Server'],
   },
   {
@@ -81,7 +82,7 @@ export const skillGroups: SkillGroup[] = [
 ]
 
 export const jobHighlights: Record<string, string[]> = {
-  systems: ['Lead front-end for enterprise clients and mentor a team of 5 developers.'],
+  systems: ['Lead frontend for enterprise clients and mentor a team of 5 developers.'],
   royal: [
     'Cut page load time by 50% with code splitting, lazy loading and bundle reduction.',
     'Built multi-brand themes with design tokens and Redux Toolkit state.',
@@ -113,7 +114,7 @@ export const certifications = [
   { name: 'Node.js, Express, MongoDB & More: The Complete Bootcamp', issuer: 'Udemy', date: 'Apr 2026' },
   { name: 'AI with GitHub Copilot for JavaScript and React Developers', issuer: 'Udemy', date: 'Jan 2026' },
   { name: 'Programming with JavaScript', issuer: 'Meta · Coursera', date: 'Jan 2023' },
-  { name: 'Introduction to Front-End Development', issuer: 'Meta · Coursera', date: 'Dec 2022' },
+  { name: 'Introduction to Frontend Development', issuer: 'Meta · Coursera', date: 'Dec 2022' },
 ]
 
 export const languages = [

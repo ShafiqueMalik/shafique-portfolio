@@ -72,14 +72,14 @@ export function Hero({ portfolio }: { portfolio: IPortfolioData }) {
                 className="pointer-events-none absolute inset-x-10 bottom-8 h-8 rounded-[100%] bg-foreground/20 blur-2xl"
               />
             </div>
-            {/* TODO: when this portrait changes, replace public/portraits/hero-portrait.png */}
+            {/* TODO: when this portrait changes, replace public/portraits/hero-portrait.webp */}
             <div className="absolute inset-x-1 -top-36 bottom-12">
               <Image
-                src="/portraits/hero-portrait.png"
+                src="/portraits/hero-portrait.webp"
                 alt={`Portrait of ${fullName}`}
                 fill
-                priority
-                sizes="(min-width: 1024px) 33vw, 90vw"
+                preload
+                sizes="(min-width: 1024px) 384px, 90vw"
                 className="object-contain object-bottom"
               />
             </div>

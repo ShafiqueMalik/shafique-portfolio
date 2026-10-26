@@ -1,4 +1,4 @@
-import { Code2, LayoutTemplate, MapPinned, Palette, ScanSearch, Sparkles, Webhook, type LucideIcon } from 'lucide-react'
+import { Code2, Database, LayoutTemplate, MapPinned, Palette, ScanSearch, Sparkles, Webhook, type LucideIcon } from 'lucide-react'
 import { SectionHeading } from '@/components/shared/SectionHeading'
 import type { IMyServices } from '@/lib/types'
 import { availability, listedServices, services as copy } from '@/lib/content'
@@ -12,11 +12,12 @@ const iconMap: Record<string, LucideIcon> = {
   FaMapMarkedAlt: MapPinned,
   AeoSeo: ScanSearch,
   FaSearch: ScanSearch,
+  Supabase: Database,
 }
 
 export function Services({ data }: { data: IMyServices }) {
   return (
-    <section id="services">
+    <section id="services" className="below-fold">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
         {/* TODO: update this in sanity.io → My Services › heading, subheading, services[] (see lib/content.ts) */}
         <SectionHeading

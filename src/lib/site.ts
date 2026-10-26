@@ -1,17 +1,15 @@
-import { headers } from 'next/headers'
-
-export const siteTitle = 'Shafique Malik — Senior Front-End Developer'
+export const siteTitle = 'Shafique Malik — Senior Frontend Engineer'
 
 export const siteDescription =
-  'Senior Front-End Developer (React.js & Next.js, MERN, SEO/AEO) with 8+ years building scalable, unit-tested, internationalized web apps for enterprise e-commerce, SaaS, banking and government.'
+  'Senior Frontend Engineer (React.js & Next.js, MERN, SEO/AEO) with 8+ years building scalable, unit-tested, internationalized web apps for enterprise e-commerce, SaaS, banking and government.'
 
-export async function siteOrigin() {
-  const headerList = await headers()
-  const host = (headerList.get('x-forwarded-host') ?? headerList.get('host') ?? 'localhost:3001')
-    .split(',')[0]
-    .trim()
-  const proto = (headerList.get('x-forwarded-proto') ?? (host.includes('localhost') ? 'http' : 'https'))
-    .split(',')[0]
-    .trim()
-  return `${proto}://${host}`
+/**
+ * Absolute site origin used for canonical, social, and JSON-LD URLs.
+ * Set NEXT_PUBLIC_SITE_URL in production. Netlify also provides URL at build time.
+ * Reading the request host would force the page to render on every visit.
+ */
+export function siteOrigin() {
+  const configured = process.env.NEXT_PUBLIC_SITE_URL || process.env.URL
+  if (configured) return configured.replace(/\/$/, '')
+  return 'http://localhost:3000'
 }

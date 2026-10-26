@@ -10,14 +10,14 @@ import type { IMyServices, IServiceItem } from '@/lib/types'
 
 // TODO: update this in sanity.io → Portfolio › roleDescription
 export const roleDescription: string | undefined =
-  "Senior Front-End Developer with 8+ years of experience building fast, scalable web applications. Currently leading React.js and Next.js development for enterprise clients at Systems Ltd."
+  "Senior Frontend Engineer with 8+ years of experience building fast, scalable web applications. Currently leading React.js and Next.js development for enterprise clients at Systems Ltd."
 
 export const services = {
   // TODO: update this in sanity.io → My Services › heading
   heading: 'How I can help' as string | undefined,
   // TODO: update this in sanity.io → My Services › subheading
   subheading:
-    'From architecture to launch, I deliver front-end solutions that are fast, accessible, maintainable and built to scale with your business.' as
+    'From architecture to launch, I deliver frontend solutions that are fast, accessible, maintainable and built to scale with your business.' as
       | string
       | undefined,
   // TODO: update these in sanity.io → My Services › services[] (title + description)
@@ -51,6 +51,15 @@ export const services = {
   } as Record<string, { title: string; description: string }>,
   // TODO: update this in sanity.io → My Services › services[] (delete "Theme Development"; it is merged into the first service)
   hidden: ['Theme Development'],
+  // Shown first. TODO: update this in sanity.io → My Services › services[] (add as a new service)
+  featured: [
+    {
+      title: 'Supabase as a Backend',
+      description:
+        'Build production-grade applications with a Postgres database, authentication, instant APIs and Realtime.',
+      iconName: 'Supabase',
+    },
+  ] as { title: string; description: string; iconName?: string | null; iconImage?: string | null }[],
   // TODO: update this in sanity.io → My Services › services[] (add as a new service)
   extra: [
     {
@@ -65,6 +74,7 @@ export const services = {
 export function listedServices(data: IMyServices): IServiceItem[] {
   const current = data.services ?? []
   return [
+    ...services.featured.filter((featured) => !current.some((service) => service.title === featured.title)),
     ...current.filter((service) => !services.hidden.includes(service.title)),
     ...services.extra.filter((extra) => !current.some((service) => service.title === extra.title)),
   ].map((service) => ({
@@ -86,10 +96,17 @@ export const journey = {
   // TODO: update this in sanity.io → Journey › subtitle
   subtitle: 'Career' as string | undefined,
   description:
-    '8+ years across consultancies and product teams, leading front-end delivery for enterprise, banking and government clients.',
+    '8+ years across consultancies and product teams, leading frontend delivery for enterprise, banking and government clients.',
 }
 
 export const availability = 'Available for freelance, contract and full-time projects.'
+
+export function withFrontend(value: string) {
+  return value
+    .replace(/front[ -]end/gi, (match) => (match[0] === match[0].toUpperCase() ? 'Frontend' : 'frontend'))
+    .replace(/\bDeveloper\b/g, 'Engineer')
+    .replace(/\bdeveloper\b/g, 'engineer')
+}
 
 export const recentWorks = {
   // TODO: update this in sanity.io → Recent Works › sectionTitle

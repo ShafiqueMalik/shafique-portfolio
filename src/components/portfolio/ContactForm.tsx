@@ -2,7 +2,6 @@
 
 import { useRef, useState } from 'react'
 import { useForm, type FieldError } from 'react-hook-form'
-import emailjs from '@emailjs/browser'
 import { ArrowUpRight, Loader2 } from 'lucide-react'
 
 type Status = 'idle' | 'sent' | 'error'
@@ -39,6 +38,7 @@ export function ContactForm() {
     if (!formRef.current) return
     setStatus('idle')
     try {
+      const { default: emailjs } = await import('@emailjs/browser')
       await emailjs.sendForm('service_zutnn15', 'template_d6cumb8', formRef.current, {
         publicKey: 'user_BmmgQOqakGY8uWbnMxx8l',
       })

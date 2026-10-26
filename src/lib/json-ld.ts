@@ -1,4 +1,4 @@
-import { availability, journey, listedServices, recentWorks, roleDescription } from '@/lib/content'
+import { availability, journey, listedServices, recentWorks, roleDescription, withFrontend } from '@/lib/content'
 import { siteOrigin } from '@/lib/site'
 import { brandsFor, certifications, coreCompetencies, headline, languages, skillGroups } from '@/lib/cv'
 import type { IJourneyData, IMyServices, IMySkills, IPortfolioData, IRecentWorks, IWorkItem } from '@/lib/types'
@@ -63,11 +63,11 @@ export async function portfolioJsonLd(input: {
   skills: IMySkills
   journey: IJourneyData
 }) {
-  const origin = await siteOrigin()
+  const origin = siteOrigin()
   const pageUrl = `${origin}/`
   const personId = `${origin}/#person`
   const name = `${input.portfolio.firstName} ${input.portfolio.lastName}`.trim()
-  const portrait = `${origin}/portraits/hero-portrait.png`
+  const portrait = `${origin}/portraits/hero-portrait.webp`
   const description = [
     roleDescription ?? input.portfolio.roleDescription,
     'Open to work and open to relocation from Lahore, Punjab, Pakistan.',
@@ -84,7 +84,7 @@ export async function portfolioJsonLd(input: {
 
   const jobs = input.journey.experienceSection?.jobs ?? []
   const currentJob = jobs.find((job) => job.endDate?.trim().toLowerCase() === 'present')
-  const currentTitle = currentJob?.positions?.at(-1) || 'Senior Front-End Developer'
+  const currentTitle = withFrontend(currentJob?.positions?.at(-1) || 'Senior Frontend Engineer')
   const seenBrands = new Set<string>()
   const clients = jobs.flatMap((job) => brandsFor(job.company)).filter((brand) => {
     if (seenBrands.has(brand.name)) return false
@@ -100,7 +100,7 @@ export async function portfolioJsonLd(input: {
       '@type': 'WebSite',
       '@id': `${origin}/#website`,
       url: pageUrl,
-      name: `${name} — Senior Front-End Developer`,
+      name: `${name} — Senior Frontend Engineer`,
       description,
       inLanguage: 'en',
       publisher: { '@id': personId },
@@ -109,7 +109,7 @@ export async function portfolioJsonLd(input: {
       '@type': 'ProfilePage',
       '@id': `${origin}/#profile`,
       url: pageUrl,
-      name: `${name} — Senior Front-End Developer`,
+      name: `${name} — Senior Frontend Engineer`,
       description,
       inLanguage: 'en',
       isPartOf: { '@id': `${origin}/#website` },
@@ -215,7 +215,7 @@ export async function portfolioJsonLd(input: {
           '@type': 'Service',
           name: service.title,
           description: service.description,
-          serviceType: 'Front-end development',
+          serviceType: 'Frontend development',
           provider: { '@id': personId },
           availableChannel: {
             '@type': 'ServiceChannel',

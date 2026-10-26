@@ -20,7 +20,7 @@ export function Work({ data }: { data: IRecentWorks }) {
   const rest = works.filter((w) => !gallery.includes(w))
 
   return (
-    <section id="work" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section id="work" className="below-fold mx-auto max-w-6xl px-6 py-20 md:py-28">
       {/* TODO: update this in sanity.io → Recent Works › sectionSubtitle & sectionTitle (see lib/content.ts) */}
       <SectionHeading
         label={recentWorks.sectionSubtitle ?? data.sectionSubtitle}
@@ -42,7 +42,7 @@ export function Work({ data }: { data: IRecentWorks }) {
               >
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
                   <Image
-                    src={`${work.thumbnail}?w=1200&auto=format`}
+                    src={`${work.thumbnail}?w=960&h=600&fit=crop&auto=format&q=75`}
                     alt={`${name} website preview`}
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"

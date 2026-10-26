@@ -25,7 +25,7 @@ export function Skills({ data }: { data: IMySkills }) {
     : skillGroups
 
   return (
-    <section id="skills">
+    <section id="skills" className="below-fold">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-28"><div className="glass rounded-[2rem] p-6 md:p-12">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-12">
           <div className="flex flex-col gap-3">

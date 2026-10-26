@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const grotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-grotesk' })
 
 export async function generateMetadata(): Promise<Metadata> {
-  const origin = await siteOrigin()
+  const origin = siteOrigin()
 
   return {
     metadataBase: new URL(origin),

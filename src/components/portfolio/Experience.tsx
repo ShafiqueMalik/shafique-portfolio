@@ -1,14 +1,14 @@
 import { SectionHeading } from '@/components/shared/SectionHeading'
 import { brandsFor, certifications, highlightsFor, languages } from '@/lib/cv'
 import type { IJourneyData } from '@/lib/types'
-import { journey } from '@/lib/content'
+import { journey, withFrontend } from '@/lib/content'
 
 export function Experience({ data }: { data: IJourneyData }) {
   const jobs = data.experienceSection?.jobs ?? []
   const degrees = data.educationSection?.degrees ?? []
 
   return (
-    <section id="experience" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <section id="experience" className="below-fold mx-auto max-w-6xl px-6 py-20 md:py-28">
       {/* TODO: update this in sanity.io → Journey › subtitle & title (see lib/content.ts) */}
       <SectionHeading
         label={journey.subtitle ?? data.subtitle}
@@ -39,9 +39,10 @@ export function Experience({ data }: { data: IJourneyData }) {
                   ) : null}
                 </div>
                 <ul className="flex flex-col gap-0.5 text-sm text-muted-foreground">
-                  {[...(job.positions ?? [])].reverse().map((role) => (
-                    <li key={role}>{role}</li>
-                  ))}
+                  {[...(job.positions ?? [])].reverse().map((role) => {
+                    const title = withFrontend(role)
+                    return <li key={title}>{title}</li>
+                  })}
                 </ul>
               </div>
               {highlights.length || brands.length ? (

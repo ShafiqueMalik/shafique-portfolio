@@ -1,4 +1,5 @@
 import { ArrowUp } from 'lucide-react'
+import { withFrontend } from '@/lib/content'
 import type { IPortfolioData } from '@/lib/types'
 
 const navLinks = [
@@ -41,7 +42,7 @@ export function SiteFooter({ portfolio }: { portfolio: IPortfolioData }) {
             </span>
             <span className="flex flex-col leading-tight">
               <span className="text-sm font-semibold">{fullName}</span>
-              <span className="text-xs text-muted-foreground">{portfolio.role}</span>
+              <span className="text-xs text-muted-foreground">{withFrontend(portfolio.role)}</span>
             </span>
           </a>
 
