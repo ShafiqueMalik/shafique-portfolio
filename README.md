@@ -107,7 +107,7 @@ Name, email, and message are required. Validation messages come from React Hook 
 | --- | --- |
 | Title and description | `src/lib/site.ts` |
 | Canonical URL, Open Graph, and Twitter metadata | `src/app/layout.tsx` |
-| Share image (1200×630) | `src/app/opengraph-image.tsx` and `src/app/twitter-image.tsx` |
+| Share image (1200×630) | `public/og.png`, linked from `src/app/layout.tsx` |
 | JSON-LD | `src/lib/json-ld.ts` |
 
 Set `NEXT_PUBLIC_SITE_URL` to the live origin, for example `https://shafiquemalik.com`. Netlify provides `URL` during the build, and that is used when the public variable is unset. JSON-LD describes the person, services, selected work, and client brands that are visible on the page.

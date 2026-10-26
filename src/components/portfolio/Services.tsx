@@ -32,7 +32,7 @@ export function Services({ data }: { data: IMyServices }) {
               <li key={service.title} className="glass group flex flex-col gap-6 rounded-3xl p-8 transition-transform duration-300 hover:-translate-y-1">
                 <span className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   {service.iconImage ? (
-                    <img src={service.iconImage || '/placeholder.svg'} alt="" className="size-5 object-contain" />
+                    <img src={service.iconImage} alt="" className="size-5 object-contain" />
                   ) : (
                     <Icon className="size-5" aria-hidden="true" />
                   )}
