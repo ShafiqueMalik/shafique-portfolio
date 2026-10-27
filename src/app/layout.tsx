@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
       lastName: 'Malik',
       images: [
         {
-          url: '/og.png',
+          url: '/og.png?v=2',
           width: 1200,
           height: 630,
           type: 'image/png',
@@ -42,7 +42,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: siteTitle,
       description: siteDescription,
-      images: ['/og.png'],
+      images: ['/og.png?v=2'],
     },
     icons: {
       icon: [
