@@ -1,15 +1,15 @@
-import { Analytics } from '@vercel/analytics/next'
-import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk } from 'next/font/google'
-import { ThemeProvider } from '@/components/shared/ThemeProvider'
-import { siteDescription, siteOrigin, siteTitle } from '@/lib/site'
-import './globals.css'
+import { Analytics } from '@vercel/analytics/next';
+import type { Metadata, Viewport } from 'next';
+import { Inter, Space_Grotesk } from 'next/font/google';
+import { ThemeProvider } from '@/components/shared/ThemeProvider';
+import { siteDescription, siteOrigin, siteTitle } from '@/lib/site';
+import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const grotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-grotesk' })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const grotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-grotesk' });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const origin = siteOrigin()
+  const origin = siteOrigin();
 
   return {
     metadataBase: new URL(origin),
@@ -51,7 +51,7 @@ export async function generateMetadata(): Promise<Metadata> {
       ],
       apple: [{ url: '/apple-icon.png', type: 'image/png', sizes: '180x180' }],
     },
-  }
+  };
 }
 
 export const viewport: Viewport = {
@@ -59,21 +59,30 @@ export const viewport: Viewport = {
     { media: '(prefers-color-scheme: light)', color: '#eef2f8' },
     { media: '(prefers-color-scheme: dark)', color: '#060a14' },
   ],
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${grotesk.variable} bg-background`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${grotesk.variable} bg-background`}
+      suppressHydrationWarning
+    >
       <body className="antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
-  )
+  );
 }
